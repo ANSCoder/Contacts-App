@@ -10,20 +10,20 @@ import UIKit
 
 class ContactNavigator: Navigator{
     
-    // Here we define a set of supported destinations using an
-    // enum, and we can also use associated values to add support
-    // for passing arguments from one screen to another.
     enum Destination {
         case contactDetail
         case editContact
     }
     
     private weak var navigationController: UINavigationController?
+    private let viewControllerFactory: ContactViewControllerFactory
     
     // MARK: - Initializer
 
-    init(navigationController: UINavigationController) {
+    init(navigationController: UINavigationController,
+         viewControllerFactory: ContactViewControllerFactory) {
         self.navigationController = navigationController
+        self.viewControllerFactory = viewControllerFactory
     }
     
     // MARK: - Navigator

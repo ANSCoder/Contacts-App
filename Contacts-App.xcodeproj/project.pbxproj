@@ -20,6 +20,8 @@
 		17D1C530237344F300754B99 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 17D1C52F237344F300754B99 /* Alamofire */; };
 		17D1C53323744D9900754B99 /* ContactNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17D1C53223744D9900754B99 /* ContactNavigator.swift */; };
 		17D1C53623744DDD00754B99 /* Navigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17D1C53523744DDD00754B99 /* Navigator.swift */; };
+		17D1C53923748C1B00754B99 /* ContactViewControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17D1C53823748C1B00754B99 /* ContactViewControllerFactory.swift */; };
+		17D1C53C23748E1C00754B99 /* TableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17D1C53B23748E1C00754B99 /* TableViewDataSource.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +60,8 @@
 		17D1C52B23733C4A00754B99 /* EditContactView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditContactView.swift; sourceTree = "<group>"; };
 		17D1C53223744D9900754B99 /* ContactNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactNavigator.swift; sourceTree = "<group>"; };
 		17D1C53523744DDD00754B99 /* Navigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Navigator.swift; sourceTree = "<group>"; };
+		17D1C53823748C1B00754B99 /* ContactViewControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactViewControllerFactory.swift; sourceTree = "<group>"; };
+		17D1C53B23748E1C00754B99 /* TableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewDataSource.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +113,7 @@
 		17D1C4F323733AE100754B99 /* Contacts-App */ = {
 			isa = PBXGroup;
 			children = (
+				17D1C53A23748DF500754B99 /* DataSource */,
 				17D1C53123744D8400754B99 /* Navigation */,
 				17D1C52D237340A000754B99 /* Model */,
 				17D1C52423733B2F00754B99 /* View */,
@@ -160,6 +165,7 @@
 		17D1C53123744D8400754B99 /* Navigation */ = {
 			isa = PBXGroup;
 			children = (
+				17D1C53723748BFB00754B99 /* Factory */,
 				17D1C53423744DCD00754B99 /* Protocol */,
 				17D1C53223744D9900754B99 /* ContactNavigator.swift */,
 			);
@@ -172,6 +178,22 @@
 				17D1C53523744DDD00754B99 /* Navigator.swift */,
 			);
 			path = Protocol;
+			sourceTree = "<group>";
+		};
+		17D1C53723748BFB00754B99 /* Factory */ = {
+			isa = PBXGroup;
+			children = (
+				17D1C53823748C1B00754B99 /* ContactViewControllerFactory.swift */,
+			);
+			path = Factory;
+			sourceTree = "<group>";
+		};
+		17D1C53A23748DF500754B99 /* DataSource */ = {
+			isa = PBXGroup;
+			children = (
+				17D1C53B23748E1C00754B99 /* TableViewDataSource.swift */,
+			);
+			path = DataSource;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -311,6 +333,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				17D1C53C23748E1C00754B99 /* TableViewDataSource.swift in Sources */,
+				17D1C53923748C1B00754B99 /* ContactViewControllerFactory.swift in Sources */,
 				17D1C53623744DDD00754B99 /* Navigator.swift in Sources */,
 				17D1C52823733BEA00754B99 /* ContactDetailsView.swift in Sources */,
 				17D1C4F523733AE100754B99 /* AppDelegate.swift in Sources */,
