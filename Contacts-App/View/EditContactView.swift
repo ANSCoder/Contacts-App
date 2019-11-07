@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  EditContactView.swift
 //  Contacts-App
 //
 //  Created by Anand Nimje on 06/11/19.
@@ -8,13 +8,11 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class EditContactView: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+
     }
-
-
+    
 }
-
