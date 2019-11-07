@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ContactNavigator{
+class ContactNavigator: Navigator{
     
     // Here we define a set of supported destinations using an
     // enum, and we can also use associated values to add support
