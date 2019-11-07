@@ -8,7 +8,7 @@
 
 import UIKit
 
-class EditContactView: UIViewController {
+class EditContactView: UIViewController, Storyboarded {
 
     override func viewDidLoad() {
         super.viewDidLoad()

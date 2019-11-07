@@ -10,12 +10,12 @@ import UIKit
 
 struct ContactViewControllerFactory {
     
-    func makeContactDetailsViewController(){
-        
+    func makeContactDetailsViewController()-> ContactDetailsView{
+        return ContactDetailsView.instantiate()
     }
     
-    func makeEditContactViewController(){
-        
+    func makeEditContactViewController()-> EditContactView{
+        return EditContactView.instantiate()
     }
     
 }
