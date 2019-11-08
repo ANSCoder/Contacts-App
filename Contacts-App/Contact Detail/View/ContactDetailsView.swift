@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ContactDetailsView: UIViewController, Storyboarded {
+class ContactDetailsView: UIViewController {
     
     var presenter: ContactDetailPresenterProtocol?
     
@@ -18,3 +18,12 @@ class ContactDetailsView: UIViewController, Storyboarded {
     }
 
 }
+
+extension ContactDetailsView: ContactDetailViewProtocol {
+    
+    func showContactDetail(forContact contact: ContactModel) {
+        
+    }
+
+}
+
