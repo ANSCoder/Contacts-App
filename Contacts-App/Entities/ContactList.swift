@@ -10,10 +10,10 @@ import Foundation
 
 // MARK: - ContactModel
 struct ContactModel: Codable {
-    let id: Int?
-    let firstName, lastName, profilePic: String?
-    let favorite: Bool?
-    let url: String?
+    let id: Int
+    let firstName, lastName, profilePic: String
+    let favorite: Bool
+    let url: String
 
     enum CodingKeys: String, CodingKey {
         case id
@@ -21,6 +21,10 @@ struct ContactModel: Codable {
         case lastName = "last_name"
         case profilePic = "profile_pic"
         case favorite, url
+    }
+    
+    func fullName() -> String{
+        return firstName.capitalizingFirstLetter() + " " + lastName.capitalizingFirstLetter()
     }
 }
 
