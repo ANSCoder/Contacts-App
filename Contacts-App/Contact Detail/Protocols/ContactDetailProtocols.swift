@@ -12,7 +12,7 @@ protocol ContactDetailViewProtocol: class {
     var presenter: ContactDetailPresenterProtocol? { get set }
     
     // PRESENTER -> VIEW
-    func showContactDetail(forContact contact: ContactModel)
+    func showContactDetail(forContact details: ContactDetailModel)
     
     func showError()
     
@@ -27,6 +27,7 @@ protocol ContactDetailWireFrameProtocol: class {
 
 protocol ContactDetailPresenterProtocol: class {
     var view: ContactDetailViewProtocol? { get set }
+    var interactor: ContactDetailsInteractorInputProtocol? { get set }
     var wireFrame: ContactDetailWireFrameProtocol? { get set }
     var contact: ContactModel? { get set }
     
@@ -36,7 +37,7 @@ protocol ContactDetailPresenterProtocol: class {
 
 protocol ContactDetailsInteractorOutputProtocol: class {
     // INTERACTOR -> PRESENTER
-    func didRetrieveContacts(_ contacts: ContactList)
+    func didRetrieveContacts(_ contacts: ContactDetailModel)
     func onError()
 }
 

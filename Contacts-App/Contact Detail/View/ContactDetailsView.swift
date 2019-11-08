@@ -33,8 +33,9 @@ class ContactDetailsView: UIViewController {
 
 extension ContactDetailsView: ContactDetailViewProtocol {
     
-    func showContactDetail(forContact contact: ContactModel) {
-        
+    func showContactDetail(forContact details: ContactDetailModel) {
+        print(details)
+        contactDetail.append(details)
     }
     
     func showError() {

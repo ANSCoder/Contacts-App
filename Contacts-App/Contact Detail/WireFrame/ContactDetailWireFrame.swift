@@ -13,14 +13,19 @@ class ContactDetailWireFrame: ContactDetailWireFrameProtocol {
     class func createContactDetailModule(forContact contact: ContactModel) -> UIViewController {
         let viewController = mainStoryboard.instantiateViewController(withIdentifier: "ContactDetailsView")
         if let view = viewController as? ContactDetailsView {
-            let presenter: ContactDetailPresenterProtocol = ContactDetailPresenter()
+            let presenter: ContactDetailPresenterProtocol & ContactDetailsInteractorOutputProtocol = ContactDetailPresenter()
+            let interactor: ContactDetailsInteractorInputProtocol & ContactDetailsRemoteDataOutputProtocol = ContactDetailsInteractor()
+            let remoteDataManager: ContactDetailsRemoteDataInputProtocol = ContactDetailsRemote()
             let wireFrame: ContactDetailWireFrameProtocol = ContactDetailWireFrame()
             
             view.presenter = presenter
             presenter.view = view
             presenter.contact = contact
             presenter.wireFrame = wireFrame
-            
+            presenter.interactor = interactor
+            interactor.presenter = presenter
+            interactor.remoteDatamanager = remoteDataManager
+            remoteDataManager.remoteRequestHandler = interactor
             return viewController
         }
         return UIViewController()
