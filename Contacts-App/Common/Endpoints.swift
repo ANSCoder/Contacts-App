@@ -51,4 +51,20 @@ enum Endpoints {
             }
         }
     }
+    
+    enum contactDetail: Endpoint {
+        case fetch(_ contactId: String)
+        
+        public var path: String {
+            switch self {
+            case .fetch(let id): return "/contacts/\(id).json"
+            }
+        }
+        
+        public var url: String {
+            switch self {
+            case .fetch: return "\(API.baseUrl)\(path)"
+            }
+        }
+    }
 }

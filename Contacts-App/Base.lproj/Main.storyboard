@@ -91,6 +91,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Sem-NB-Bzd"/>
                     </view>
+                    <connections>
+                        <outlet property="tableContactDetail" destination="TlD-mv-V3a" id="HjX-mW-d9h"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="C2R-gZ-1aD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

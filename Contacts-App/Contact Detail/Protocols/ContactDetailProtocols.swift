@@ -13,6 +13,12 @@ protocol ContactDetailViewProtocol: class {
     
     // PRESENTER -> VIEW
     func showContactDetail(forContact contact: ContactModel)
+    
+    func showError()
+    
+    func showLoading()
+    
+    func hideLoading()
 }
 
 protocol ContactDetailWireFrameProtocol: class {
@@ -26,4 +32,31 @@ protocol ContactDetailPresenterProtocol: class {
     
     // VIEW -> PRESENTER
     func viewDidLoad()
+}
+
+protocol ContactDetailsInteractorOutputProtocol: class {
+    // INTERACTOR -> PRESENTER
+    func didRetrieveContacts(_ contacts: ContactList)
+    func onError()
+}
+
+protocol ContactDetailsInteractorInputProtocol: class {
+    var presenter: ContactDetailsInteractorOutputProtocol? { get set }
+    var remoteDatamanager: ContactDetailsRemoteDataInputProtocol? { get set }
+    
+    // PRESENTER -> INTERACTOR
+    func retrieveContactList(for contactId: String)
+}
+
+protocol ContactDetailsRemoteDataInputProtocol: class  {
+    var remoteRequestHandler: ContactDetailsRemoteDataOutputProtocol? { get set }
+    
+    // INTERACTOR -> REMOTEDATAMANAGER
+    func fetchContactDetails(for contactId: String)
+}
+
+protocol ContactDetailsRemoteDataOutputProtocol: class  {
+    // REMOTEDATAMANAGER -> INTERACTOR
+    func onContactDetailsRetrieved(_ contacts: ContactDetailModel)
+    func onError()
 }
