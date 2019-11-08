@@ -8,6 +8,31 @@
 
 import Foundation
 
-struct ContactListPresenter {
+class ContactListPresenter: ContactListPresenterProtocol {
+    weak var view: ContactListViewProtocol?
+    var interactor: ContactListInteractorInputProtocol?
+    var wireFrame: ContactListWireFrameProtocol?
+    
+    func viewDidLoad() {
+        view?.showLoading()
+        interactor?.retrieveContactList()
+    }
+    
+    func showContactDetail(forContact contact: ContactModel) {
+        wireFrame?.presentContactDetailScreen(from: view!, forContact: contact)
+    }
+}
+
+extension ContactListPresenter: ContactListInteractorOutputProtocol {
+    
+    func didRetrieveContacts(_ contacts: ContactList) {
+        view?.hideLoading()
+        view?.showContacts(with: contacts)
+    }
+    
+    func onError() {
+        view?.hideLoading()
+        view?.showError()
+    }
     
 }

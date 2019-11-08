@@ -28,7 +28,7 @@ protocol ContactListWireFrameProtocol: class {
                                     forContact contact: ContactModel)
 }
 
-protocol ContactListPresenterProtocol {
+protocol ContactListPresenterProtocol: class {
     var view: ContactListViewProtocol? { get set }
     var interactor: ContactListInteractorInputProtocol? { get set }
     var wireFrame: ContactListWireFrameProtocol? { get set }
@@ -38,7 +38,7 @@ protocol ContactListPresenterProtocol {
     func showContactDetail(forContact contact: ContactModel)
 }
 
-protocol ContactListInteractorOutputProtocol {
+protocol ContactListInteractorOutputProtocol: class {
     // INTERACTOR -> PRESENTER
     func didRetrieveContacts(_ contacts: ContactList)
     func onError()

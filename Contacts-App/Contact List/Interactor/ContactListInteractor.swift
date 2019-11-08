@@ -9,6 +9,24 @@
 import Foundation
 
 
-struct ContactListInteractor {
+struct ContactListInteractor: ContactListInteractorInputProtocol {
+    
+    weak var presenter: ContactListInteractorOutputProtocol?
+    var remoteDatamanager: ContactListRemoteDataInputProtocol?
+    
+    func retrieveContactList() {
+        remoteDatamanager?.retrieveContactList()
+    }
+}
+
+extension ContactListInteractor: ContactListRemoteDataOutputProtocol {
+    
+    func onContactsRetrieved(_ contacts: ContactList) {
+        presenter?.didRetrieveContacts(contacts)
+    }
+    
+    func onError() {
+        presenter?.onError()
+    }
     
 }
