@@ -7,7 +7,13 @@
 //
 
 import Foundation
+import Alamofire
 
-struct ContactListRemote {
+struct ContactListRemote: ContactListRemoteDataInputProtocol{
     
+    var remoteRequestHandler: ContactListRemoteDataOutputProtocol?
+    
+    func retrieveContactList() {
+        
+    }
 }

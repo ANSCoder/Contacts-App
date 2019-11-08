@@ -28,7 +28,7 @@ protocol ContactListWireFrameProtocol: class {
                                     forContact contact: ContactModel)
 }
 
-protocol ContactListPresenterProtocol: class {
+protocol ContactListPresenterProtocol {
     var view: ContactListViewProtocol? { get set }
     var interactor: ContactListInteractorInputProtocol? { get set }
     var wireFrame: ContactListWireFrameProtocol? { get set }
@@ -38,13 +38,13 @@ protocol ContactListPresenterProtocol: class {
     func showContactDetail(forContact contact: ContactModel)
 }
 
-protocol ContactListInteractorOutputProtocol: class {
+protocol ContactListInteractorOutputProtocol {
     // INTERACTOR -> PRESENTER
     func didRetrieveContacts(_ contacts: ContactList)
     func onError()
 }
 
-protocol ContactListInteractorInputProtocol: class {
+protocol ContactListInteractorInputProtocol {
     var presenter: ContactListInteractorOutputProtocol? { get set }
     var remoteDatamanager: ContactListRemoteDataInputProtocol? { get set }
     
@@ -52,18 +52,18 @@ protocol ContactListInteractorInputProtocol: class {
     func retrieveContactList()
 }
 
-protocol ContactListDataInputProtocol: class {
+protocol ContactListDataInputProtocol {
     // INTERACTOR -> DATAMANAGER
 }
 
-protocol ContactListRemoteDataInputProtocol: class {
+protocol ContactListRemoteDataInputProtocol {
     var remoteRequestHandler: ContactListRemoteDataOutputProtocol? { get set }
     
     // INTERACTOR -> REMOTEDATAMANAGER
     func retrieveContactList()
 }
 
-protocol ContactListRemoteDataOutputProtocol: class {
+protocol ContactListRemoteDataOutputProtocol {
     // REMOTEDATAMANAGER -> INTERACTOR
     func onContactsRetrieved(_ contacts: ContactList)
     func onError()
