@@ -14,6 +14,16 @@ struct ContactListRemote: ContactListRemoteDataInputProtocol{
     var remoteRequestHandler: ContactListRemoteDataOutputProtocol?
     
     func retrieveContactList() {
-        
+           AF
+            .request(Endpoints.contactList.fetch.url, method: .get)
+            .validate()
+            .responseDecodable { (response: DataResponse<ContactList, AFError>) in
+                switch response.result {
+                case .success(let contacts):
+                    self.remoteRequestHandler?.onContactsRetrieved(contacts)
+                case .failure( _):
+                    self.remoteRequestHandler?.onError()
+                }
+        }
     }
 }

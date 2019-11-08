@@ -17,7 +17,6 @@
 		17D1C52823733BEA00754B99 /* ContactDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17D1C52723733BEA00754B99 /* ContactDetailsView.swift */; };
 		17D1C52A23733C0F00754B99 /* ContactsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17D1C52923733C0F00754B99 /* ContactsListView.swift */; };
 		17D1C52C23733C4A00754B99 /* EditContactView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17D1C52B23733C4A00754B99 /* EditContactView.swift */; };
-		17D1C530237344F300754B99 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 17D1C52F237344F300754B99 /* Alamofire */; };
 		17D1C53323744D9900754B99 /* ContactNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17D1C53223744D9900754B99 /* ContactNavigator.swift */; };
 		17D1C53623744DDD00754B99 /* Navigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17D1C53523744DDD00754B99 /* Navigator.swift */; };
 		17D1C53923748C1B00754B99 /* ContactViewControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17D1C53823748C1B00754B99 /* ContactViewControllerFactory.swift */; };
@@ -31,6 +30,7 @@
 		17D1C55D23752CD100754B99 /* ContactListProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17D1C55C23752CD100754B99 /* ContactListProtocols.swift */; };
 		17D1C55F23752D5F00754B99 /* ContactList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17D1C55E23752D5F00754B99 /* ContactList.swift */; };
 		17D1C562237535C500754B99 /* Endpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17D1C561237535C500754B99 /* Endpoints.swift */; };
+		17D1C56523754F6800754B99 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 17D1C56423754F6800754B99 /* Alamofire */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,7 +87,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				17D1C530237344F300754B99 /* Alamofire in Frameworks */,
+				17D1C56523754F6800754B99 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -384,7 +384,7 @@
 			);
 			name = "Contacts-App";
 			packageProductDependencies = (
-				17D1C52F237344F300754B99 /* Alamofire */,
+				17D1C56423754F6800754B99 /* Alamofire */,
 			);
 			productName = "Contacts-App";
 			productReference = 17D1C4F123733AE100754B99 /* Contacts-App.app */;
@@ -459,7 +459,7 @@
 			);
 			mainGroup = 17D1C4E823733AE100754B99;
 			packageReferences = (
-				17D1C52E237344F300754B99 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				17D1C56323754F6800754B99 /* XCRemoteSwiftPackageReference "Alamofire" */,
 			);
 			productRefGroup = 17D1C4F223733AE100754B99 /* Products */;
 			projectDirPath = "";
@@ -846,20 +846,20 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		17D1C52E237344F300754B99 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+		17D1C56323754F6800754B99 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 4.9.1;
+				minimumVersion = "5.0.0-rc.3";
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		17D1C52F237344F300754B99 /* Alamofire */ = {
+		17D1C56423754F6800754B99 /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 17D1C52E237344F300754B99 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			package = 17D1C56323754F6800754B99 /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
 		};
 /* End XCSwiftPackageProductDependency section */
