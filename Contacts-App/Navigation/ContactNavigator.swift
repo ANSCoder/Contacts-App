@@ -29,8 +29,18 @@ class ContactNavigator: Navigator{
     // MARK: - Navigator
 
     func navigate(to destination: Destination) {
-        let viewController = makeViewController(for: destination)
-        navigationController?.pushViewController(viewController, animated: true)
+        switch destination {
+        case .contactDetail:
+             let viewController = ContactDetailsView.instantiate()
+             navigationController?.pushViewController(viewController, animated: true)
+        case .editContact:
+             let viewController = EditContactView.instantiate()
+             navigationController?.topViewController?.present(viewController,
+                                                              animated: true, completion: nil)
+        }
+        
+//        let viewController = makeViewController(for: destination)
+//        navigationController?.pushViewController(viewController, animated: true)
     }
 
     // MARK: - Private
@@ -38,9 +48,9 @@ class ContactNavigator: Navigator{
     private func makeViewController(for destination: Destination) -> UIViewController {
         switch destination {
         case .contactDetail:
-            return ContactDetailsView()
+            return ContactDetailsView.instantiate()
         case .editContact:
-            return EditContactView()
+            return EditContactView.instantiate()
         }
     }
 }
