@@ -34,10 +34,12 @@ class ContactListWireFrame: ContactListWireFrameProtocol {
         return UIStoryboard(name: "Main", bundle: Bundle.main)
     }
     
-    func presentContactDetailScreen(from view: ContactListViewProtocol, forContact contact: ContactModel) {
+    func presentContactDetailScreen(from view: ContactListViewProtocol,
+                                    forContact contact: ContactModel) {
         let contactDetailViewController = ContactDetailWireFrame.createContactDetailModule(forContact: contact)
         
         if let sourceView = view as? UIViewController {
+            sourceView.navigationController?.navigationBar.tintColor = .lightGray
             sourceView.navigationController?.pushViewController(contactDetailViewController, animated: true)
         }
     }

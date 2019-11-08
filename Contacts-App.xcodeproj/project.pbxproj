@@ -12,6 +12,8 @@
 		170DCCC023758679004F8F80 /* ContactListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 170DCCBE23758679004F8F80 /* ContactListCell.swift */; };
 		170DCCC323758BAF004F8F80 /* ImageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 170DCCC223758BAF004F8F80 /* ImageProvider.swift */; };
 		170DCCC523759360004F8F80 /* ExString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 170DCCC423759360004F8F80 /* ExString.swift */; };
+		170DCCC92375AE26004F8F80 /* ContactDetailsHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 170DCCC82375AE26004F8F80 /* ContactDetailsHeaderView.swift */; };
+		170DCCCB2375AE35004F8F80 /* ContactDetailsHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 170DCCCA2375AE35004F8F80 /* ContactDetailsHeaderView.xib */; };
 		17D1C4F523733AE100754B99 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17D1C4F423733AE100754B99 /* AppDelegate.swift */; };
 		17D1C4F723733AE100754B99 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17D1C4F623733AE100754B99 /* SceneDelegate.swift */; };
 		17D1C4FC23733AE100754B99 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 17D1C4FA23733AE100754B99 /* Main.storyboard */; };
@@ -59,6 +61,8 @@
 		170DCCBE23758679004F8F80 /* ContactListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactListCell.swift; sourceTree = "<group>"; };
 		170DCCC223758BAF004F8F80 /* ImageProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageProvider.swift; sourceTree = "<group>"; };
 		170DCCC423759360004F8F80 /* ExString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExString.swift; sourceTree = "<group>"; };
+		170DCCC82375AE26004F8F80 /* ContactDetailsHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactDetailsHeaderView.swift; sourceTree = "<group>"; };
+		170DCCCA2375AE35004F8F80 /* ContactDetailsHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContactDetailsHeaderView.xib; sourceTree = "<group>"; };
 		17D1C4F123733AE100754B99 /* Contacts-App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Contacts-App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		17D1C4F423733AE100754B99 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		17D1C4F623733AE100754B99 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -137,6 +141,22 @@
 				170DCCC223758BAF004F8F80 /* ImageProvider.swift */,
 			);
 			path = "Image Provider";
+			sourceTree = "<group>";
+		};
+		170DCCC62375AD7C004F8F80 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		170DCCC72375AD86004F8F80 /* Header View */ = {
+			isa = PBXGroup;
+			children = (
+				170DCCC82375AE26004F8F80 /* ContactDetailsHeaderView.swift */,
+				170DCCCA2375AE35004F8F80 /* ContactDetailsHeaderView.xib */,
+			);
+			path = "Header View";
 			sourceTree = "<group>";
 		};
 		17D1C4E823733AE100754B99 = {
@@ -363,6 +383,8 @@
 		17D1C56D23756B6E00754B99 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				170DCCC72375AD86004F8F80 /* Header View */,
+				170DCCC62375AD7C004F8F80 /* Cell */,
 				17D1C56E23756F7A00754B99 /* ContactDetailsView.swift */,
 			);
 			path = View;
@@ -480,6 +502,7 @@
 			files = (
 				170DCCBF23758679004F8F80 /* ContactListCell.xib in Resources */,
 				17D1C50123733AE300754B99 /* LaunchScreen.storyboard in Resources */,
+				170DCCCB2375AE35004F8F80 /* ContactDetailsHeaderView.xib in Resources */,
 				17D1C4FE23733AE300754B99 /* Assets.xcassets in Resources */,
 				17D1C4FC23733AE100754B99 /* Main.storyboard in Resources */,
 			);
@@ -520,6 +543,7 @@
 				17D1C567237565F000754B99 /* ContactDetailWireFrame.swift in Sources */,
 				17D1C55423752B8700754B99 /* ContactListInteractor.swift in Sources */,
 				17D1C55923752C1F00754B99 /* ContactListPresenter.swift in Sources */,
+				170DCCC92375AE26004F8F80 /* ContactDetailsHeaderView.swift in Sources */,
 				17D1C4F723733AE100754B99 /* SceneDelegate.swift in Sources */,
 				170DCCB62375805E004F8F80 /* LoadingViewController.swift in Sources */,
 				170DCCC323758BAF004F8F80 /* ImageProvider.swift in Sources */,

@@ -24,6 +24,5 @@ extension ContactDetailsView: ContactDetailViewProtocol {
     func showContactDetail(forContact contact: ContactModel) {
         
     }
-
 }
 
