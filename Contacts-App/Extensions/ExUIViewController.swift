@@ -9,23 +9,19 @@
 import UIKit
 
 extension UIViewController {
-    static var loading: UIViewController {
-        let viewController = UIViewController()
+    func add(_ child: UIViewController) {
+        addChild(child)
+        view.addSubview(child.view)
+        child.didMove(toParent: self)
+    }
 
-        let indicator = UIActivityIndicatorView(style: .medium)
-        indicator.translatesAutoresizingMaskIntoConstraints = false
-        indicator.startAnimating()
-        viewController.view.addSubview(indicator)
+    func remove() {
+        guard parent != nil else {
+            return
+        }
 
-        NSLayoutConstraint.activate([
-            indicator.centerXAnchor.constraint(
-                equalTo: viewController.view.centerXAnchor
-            ),
-            indicator.centerYAnchor.constraint(
-                equalTo: viewController.view.centerYAnchor
-            )
-        ])
-
-        return viewController
+        willMove(toParent: nil)
+        view.removeFromSuperview()
+        removeFromParent()
     }
 }

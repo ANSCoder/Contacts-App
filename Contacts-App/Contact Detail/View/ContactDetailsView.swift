@@ -10,6 +10,8 @@ import UIKit
 
 class ContactDetailsView: UIViewController, Storyboarded {
     
+    var presenter: ContactDetailPresenterProtocol?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

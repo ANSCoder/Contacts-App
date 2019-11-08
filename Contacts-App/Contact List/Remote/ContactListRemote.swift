@@ -9,11 +9,11 @@
 import Foundation
 import Alamofire
 
-struct ContactListRemote: ContactListRemoteDataInputProtocol{
+class ContactListRemote: ContactListRemoteDataInputProtocol{
     
     var remoteRequestHandler: ContactListRemoteDataOutputProtocol?
     
-    func retrieveContactList() {
+    func fetchContactList() {
            AF
             .request(Endpoints.contactList.fetch.url, method: .get)
             .validate()

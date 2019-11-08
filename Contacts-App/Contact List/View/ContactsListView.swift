@@ -11,20 +11,39 @@ import UIKit
 class ContactsListView: UIViewController {
     
     @IBOutlet weak var tableContactList: UITableView!
+    var presenter: ContactListPresenterProtocol?
+    var contactList: ContactList = []
+    let loadingViewController = LoadingViewController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-     
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        let navigator = ContactNavigator(navigationController: view.window?.rootViewController as! UINavigationController,
-                       viewControllerFactory: ContactViewControllerFactory())
-        navigator.navigate(to: .editContact)
+        viewSetup()
     }
     
     func viewSetup(){
-        
+        presenter?.viewDidLoad()
+        tableContactList.tableFooterView = UIView()
     }
+}
+
+extension ContactsListView: ContactListViewProtocol {
+    
+    func showContacts(with contacts: ContactList){
+        contactList = contacts
+        tableContactList.reloadData()
+    }
+    
+    func showError() {
+        //"Internet not connected"
+    }
+    
+    func showLoading() {
+       add(loadingViewController)
+    }
+    
+    func hideLoading() {
+        loadingViewController.remove()
+    }
+    
 }

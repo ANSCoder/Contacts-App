@@ -81,7 +81,7 @@
         <!--Navigation Controller-->
         <scene sceneID="Rxo-VI-oiD">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Gkk-Rt-rf0" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="ContactsNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="Gkk-Rt-rf0" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="1gG-ln-XVK">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>

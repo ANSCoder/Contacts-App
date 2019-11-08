@@ -9,13 +9,13 @@
 import Foundation
 
 
-struct ContactListInteractor: ContactListInteractorInputProtocol {
+class ContactListInteractor: ContactListInteractorInputProtocol {
     
     weak var presenter: ContactListInteractorOutputProtocol?
     var remoteDatamanager: ContactListRemoteDataInputProtocol?
     
     func retrieveContactList() {
-        remoteDatamanager?.retrieveContactList()
+        remoteDatamanager?.fetchContactList()
     }
 }
 

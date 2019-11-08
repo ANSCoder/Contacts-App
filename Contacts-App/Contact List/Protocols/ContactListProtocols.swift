@@ -9,7 +9,7 @@
 import UIKit
 
 protocol ContactListViewProtocol: class {
-    var presenter: ContactListViewProtocol? { get set }
+    var presenter: ContactListPresenterProtocol? { get set }
     
     // PRESENTER -> VIEW
     func showContacts(with contacts: ContactList)
@@ -44,7 +44,7 @@ protocol ContactListInteractorOutputProtocol: class {
     func onError()
 }
 
-protocol ContactListInteractorInputProtocol {
+protocol ContactListInteractorInputProtocol: class {
     var presenter: ContactListInteractorOutputProtocol? { get set }
     var remoteDatamanager: ContactListRemoteDataInputProtocol? { get set }
     
@@ -52,18 +52,18 @@ protocol ContactListInteractorInputProtocol {
     func retrieveContactList()
 }
 
-protocol ContactListDataInputProtocol {
+protocol ContactListDataInputProtocol: class  {
     // INTERACTOR -> DATAMANAGER
 }
 
-protocol ContactListRemoteDataInputProtocol {
+protocol ContactListRemoteDataInputProtocol: class  {
     var remoteRequestHandler: ContactListRemoteDataOutputProtocol? { get set }
     
     // INTERACTOR -> REMOTEDATAMANAGER
-    func retrieveContactList()
+    func fetchContactList()
 }
 
-protocol ContactListRemoteDataOutputProtocol {
+protocol ContactListRemoteDataOutputProtocol: class  {
     // REMOTEDATAMANAGER -> INTERACTOR
     func onContactsRetrieved(_ contacts: ContactList)
     func onError()
