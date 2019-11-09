@@ -17,13 +17,13 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZOE-Nu-P7D">
-                        <rect key="frame" x="24" y="13" width="97.5" height="18"/>
+                        <rect key="frame" x="24" y="13" width="81.5" height="18"/>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SVz-eC-BS4">
-                        <rect key="frame" x="153.5" y="13" width="146.5" height="18"/>
+                        <rect key="frame" x="137.5" y="13" width="162.5" height="18"/>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -38,7 +38,7 @@
                     <constraint firstAttribute="bottom" secondItem="ZOE-Nu-P7D" secondAttribute="bottom" constant="13" id="fy9-bi-BE4"/>
                     <constraint firstItem="SVz-eC-BS4" firstAttribute="leading" secondItem="ZOE-Nu-P7D" secondAttribute="trailing" constant="32" id="gNP-0u-FWy"/>
                     <constraint firstItem="ZOE-Nu-P7D" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="24" id="tz6-VX-hPG"/>
-                    <constraint firstItem="SVz-eC-BS4" firstAttribute="width" secondItem="ZOE-Nu-P7D" secondAttribute="width" multiplier="1.5" id="vkZ-2n-EfQ"/>
+                    <constraint firstItem="SVz-eC-BS4" firstAttribute="width" secondItem="ZOE-Nu-P7D" secondAttribute="width" multiplier="2" id="vkZ-2n-EfQ"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
