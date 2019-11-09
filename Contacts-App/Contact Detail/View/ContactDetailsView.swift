@@ -13,6 +13,7 @@ class ContactDetailsView: UIViewController {
     var presenter: ContactDetailPresenterProtocol?
     @IBOutlet weak var tableContactDetail: UITableView!
     var contactDetail = [[String: String]]()
+    var contactDetailsList = ContactDetailList()
     let loadingViewController = LoadingViewController()
     
     //MARK: - Life Cycle
@@ -26,15 +27,20 @@ class ContactDetailsView: UIViewController {
         tableContactDetail.register(UINib(nibName: "ContactDetailCell",
                                         bundle: nil),
                                   forCellReuseIdentifier: "ContactDetailCell")
+        tableContactDetail.register(UINib(nibName: "ContactDetailsHeaderView",
+                                          bundle: nil),
+                                    forHeaderFooterViewReuseIdentifier: "ContactDetailsHeaderView")
         tableContactDetail.tableFooterView = UIView()
         presenter?.viewDidLoad()
     }
+
 }
 
 extension ContactDetailsView: ContactDetailViewProtocol {
 
     func showContactDetail(forContact details: ContactDetailModel) {
         //Create contact Details
+        contactDetailsList.append(details)
         contactDetail = [["title": "mobile", "value": details.phoneNumber],
                          ["title": "email", "value": details.email]]
         tableContactDetail.reloadData()
@@ -74,4 +80,19 @@ extension ContactDetailsView: UITableViewDataSource{
 
 extension ContactDetailsView: UITableViewDelegate{
     
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat{
+        return 346.0
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView?{
+        guard let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: "ContactDetailsHeaderView" ) as? ContactDetailsHeaderView else {
+            debugPrint("HeaderView Identifier not found!")
+            return nil
+        }
+        guard contactDetailsList.count != 0 else {
+            return headerView
+        }
+        headerView.configHeader(for: contactDetailsList[section])
+        return headerView
+    }
 }

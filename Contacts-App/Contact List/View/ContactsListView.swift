@@ -76,8 +76,8 @@ extension ContactsListView: UITableViewDataSource{
         cell.profileImageView.backgroundColor = UIColor(white: 0.95, alpha: 1)
         cell.profileImageView.image = image
         if image == nil {
-            imageProvider.loadImages(from :mediaUrl, completion: { image  in
-                let indexPath_ = self.tableContactList.indexPath(for: cell)
+            imageProvider.loadImages(from :mediaUrl, completion: {[weak self] image  in
+                let indexPath_ = self?.tableContactList.indexPath(for: cell)
                 if indexPath == indexPath_ {
                     cell.profileImageView.image = image
                 }
