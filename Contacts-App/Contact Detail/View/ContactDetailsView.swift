@@ -32,15 +32,7 @@ class ContactDetailsView: UIViewController {
 }
 
 extension ContactDetailsView: ContactDetailViewProtocol {
-    
-    func newJSONEncoder() -> JSONEncoder {
-        let encoder = JSONEncoder()
-        if #available(iOS 10.0, OSX 10.12, tvOS 10.0, watchOS 3.0, *) {
-            encoder.dateEncodingStrategy = .iso8601
-        }
-        return encoder
-    }
-    
+
     func showContactDetail(forContact details: ContactDetailModel) {
         //Create contact Details
         contactDetail = [["title": "mobile", "value": details.phoneNumber],
