@@ -211,6 +211,7 @@
                 <outlet property="buttonEmail" destination="cu3-MM-bvU" id="c2S-m3-yGG"/>
                 <outlet property="buttonFavourite" destination="KX6-69-t8K" id="7mo-0F-BGy"/>
                 <outlet property="buttonMessage" destination="684-k7-F5V" id="goS-e2-jaN"/>
+                <outlet property="favouriteImageView" destination="xeI-wB-knP" id="z3D-t6-ftR"/>
                 <outlet property="fullNameLabel" destination="CmQ-Rb-51S" id="1pY-RR-f2o"/>
                 <outlet property="profileImageView" destination="Deg-bg-j8P" id="Eps-de-cAq"/>
             </connections>

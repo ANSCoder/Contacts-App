@@ -31,7 +31,15 @@ class ContactDetailsView: UIViewController {
                                           bundle: nil),
                                     forHeaderFooterViewReuseIdentifier: "ContactDetailsHeaderView")
         tableContactDetail.tableFooterView = UIView()
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Edit",
+                                                            style: .plain,
+                                                            target: self,
+                                                            action: #selector(onTapEditContact))
         presenter?.viewDidLoad()
+    }
+    
+    @objc func onTapEditContact(){
+        
     }
 
 }

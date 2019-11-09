@@ -17,6 +17,7 @@ class ContactDetailsHeaderView: UITableViewHeaderFooterView {
     @IBOutlet weak var buttonCall: UIButton!
     @IBOutlet weak var buttonEmail: UIButton!
     @IBOutlet weak var buttonFavourite: UIButton!
+    @IBOutlet weak var favouriteImageView: UIImageView!
     
 
     override func draw(_ rect: CGRect) {
@@ -25,6 +26,7 @@ class ContactDetailsHeaderView: UITableViewHeaderFooterView {
     
     func configHeader(for model: ContactDetailModel){
         fullNameLabel.text = model.fullName()
+        favouriteImageView.image = model.favorite ? #imageLiteral(resourceName: "home_favourite") : #imageLiteral(resourceName: "favourite_button")
         guard let mediaUrl = NSURL(string: Endpoints
                                             .ImagePath
                                             .profilePic(model.profilePic)

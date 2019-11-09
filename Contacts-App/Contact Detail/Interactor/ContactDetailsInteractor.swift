@@ -14,7 +14,7 @@ class ContactDetailsInteractor: ContactDetailsInteractorInputProtocol {
     
     var remoteDatamanager: ContactDetailsRemoteDataInputProtocol?
     
-    func retrieveContactList(for contactId: String) {
+    func retrieveContactDetails(for contactId: String) {
         remoteDatamanager?.fetchContactDetails(for: contactId)
     }
 }

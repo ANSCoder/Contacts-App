@@ -1,15 +1,15 @@
 //
-//  ContactDetailProtocols.swift
+//  EditContactProtocol.swift
 //  Contacts-App
 //
-//  Created by Anand Nimje on 08/11/19.
+//  Created by Anand Nimje on 09/11/19.
 //  Copyright © 2019 Anand. All rights reserved.
 //
 
 import UIKit
 
-protocol ContactDetailViewProtocol: class {
-    var presenter: ContactDetailPresenterProtocol? { get set }
+protocol EditContactViewProtocol: class {
+    var presenter: EditContactPresenterProtocol? { get set }
     
     // PRESENTER -> VIEW
     func showContactDetail(forContact details: ContactDetailModel)
@@ -21,43 +21,44 @@ protocol ContactDetailViewProtocol: class {
     func hideLoading()
 }
 
-protocol ContactDetailWireFrameProtocol: class {
-    static func createContactDetailModule(forContact contact: ContactModel) -> UIViewController
+protocol EditContactWireFrameProtocol: class {
+    static func editContactDetail(forContact contact: ContactDetailModel) -> UIViewController
 }
 
-protocol ContactDetailPresenterProtocol: class {
+protocol EditContactPresenterProtocol: class {
     var view: ContactDetailViewProtocol? { get set }
     var interactor: ContactDetailsInteractorInputProtocol? { get set }
     var wireFrame: ContactDetailWireFrameProtocol? { get set }
-    var contact: ContactModel? { get set }
+    var contact: ContactDetailModel? { get set }
     
     // VIEW -> PRESENTER
     func viewDidLoad()
 }
 
-protocol ContactDetailsInteractorOutputProtocol: class {
+protocol EditContactInteractorOutputProtocol: class {
     // INTERACTOR -> PRESENTER
-    func didRetrieveContacts(_ contacts: ContactDetailModel)
+    func didSubmittedContactDetails(_ result: Any)
     func onError()
 }
 
-protocol ContactDetailsInteractorInputProtocol: class {
+protocol EditContactInteractorInputProtocol: class {
     var presenter: ContactDetailsInteractorOutputProtocol? { get set }
     var remoteDatamanager: ContactDetailsRemoteDataInputProtocol? { get set }
     
     // PRESENTER -> INTERACTOR
-    func retrieveContactDetails(for contactId: String)
+    func updateContactDetails(for details: [String: Any])
 }
 
-protocol ContactDetailsRemoteDataInputProtocol: class  {
+protocol EditContactRemoteDataInputProtocol: class  {
     var remoteRequestHandler: ContactDetailsRemoteDataOutputProtocol? { get set }
     
     // INTERACTOR -> REMOTEDATAMANAGER
-    func fetchContactDetails(for contactId: String)
+    func updateContactDetails(for contactId: String)
 }
 
-protocol ContactDetailsRemoteDataOutputProtocol: class  {
+protocol EditContactRemoteDataOutputProtocol: class  {
     // REMOTEDATAMANAGER -> INTERACTOR
-    func onContactDetailsRetrieved(_ contacts: ContactDetailModel)
+    func onSuccessfullyUpdated(_ contacts: ContactDetailModel)
     func onError()
 }
+
