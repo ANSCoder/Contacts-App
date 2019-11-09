@@ -23,6 +23,10 @@ protocol ContactDetailViewProtocol: class {
 
 protocol ContactDetailWireFrameProtocol: class {
     static func createContactDetailModule(forContact contact: ContactModel) -> UIViewController
+    
+    // PRESENTER -> WIREFRAME
+    func presentEditContactScreen(from view: ContactDetailViewProtocol,
+                                    forContact contact: ContactDetailModel)
 }
 
 protocol ContactDetailPresenterProtocol: class {
@@ -33,6 +37,7 @@ protocol ContactDetailPresenterProtocol: class {
     
     // VIEW -> PRESENTER
     func viewDidLoad()
+    func updateContactDetails(for details: ContactDetailModel)
 }
 
 protocol ContactDetailsInteractorOutputProtocol: class {

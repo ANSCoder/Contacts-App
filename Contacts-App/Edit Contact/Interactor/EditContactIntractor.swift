@@ -8,6 +8,24 @@
 
 import Foundation
 
-class EditContactIntractor{
+class EditContactIntractor: EditContactInteractorInputProtocol{
     
+    
+    var presenter: EditContactInteractorOutputProtocol?
+    
+    var remoteDatamanager: EditContactRemoteDataInputProtocol?
+    
+    func updateContactDetails(for contactId: String, details: [String : Any]) {
+        
+    }
+}
+
+extension EditContactIntractor: EditContactRemoteDataOutputProtocol{
+    func onSuccessfullyUpdated(_ contacts: ContactDetailModel) {
+        
+    }
+    
+    func onError() {
+        presenter?.onError()
+    }
 }

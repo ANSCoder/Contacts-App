@@ -24,13 +24,8 @@ class ContactDetailsView: UIViewController {
     }
     
     func viewSetup(){
-        tableContactDetail.register(UINib(nibName: "ContactDetailCell",
-                                        bundle: nil),
-                                  forCellReuseIdentifier: "ContactDetailCell")
-        tableContactDetail.register(UINib(nibName: "ContactDetailsHeaderView",
-                                          bundle: nil),
-                                    forHeaderFooterViewReuseIdentifier: "ContactDetailsHeaderView")
-        tableContactDetail.tableFooterView = UIView()
+        tableViewSetup()
+        
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Edit",
                                                             style: .plain,
                                                             target: self,
@@ -38,10 +33,23 @@ class ContactDetailsView: UIViewController {
         presenter?.viewDidLoad()
     }
     
-    @objc func onTapEditContact(){
-        
+    func tableViewSetup(){
+        tableContactDetail.register(UINib(nibName: "ContactDetailCell",
+                                        bundle: nil),
+                                  forCellReuseIdentifier: "ContactDetailCell")
+        tableContactDetail.register(UINib(nibName: "ContactDetailsHeaderView",
+                                          bundle: nil),
+                                    forHeaderFooterViewReuseIdentifier: "ContactDetailsHeaderView")
+        tableContactDetail.tableFooterView = UIView()
     }
-
+    
+    //MARK: - Update Contact Details
+    @objc func onTapEditContact(){
+        guard contactDetailsList.count != 0 else {
+            return
+        }
+        presenter?.updateContactDetails(for: contactDetailsList[0])
+    }
 }
 
 extension ContactDetailsView: ContactDetailViewProtocol {

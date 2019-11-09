@@ -35,5 +35,16 @@ class ContactDetailWireFrame: ContactDetailWireFrameProtocol {
         return UIStoryboard(name: "Main", bundle: Bundle.main)
     }
     
+    func presentEditContactScreen(from view: ContactDetailViewProtocol,
+                                    forContact contact: ContactDetailModel){
+        let contactDetailViewController = EditContactWireFrame.editContactDetail(forContact: contact)
+        
+        if let sourceView = view as? UIViewController {
+            let navController = UINavigationController(rootViewController: contactDetailViewController)
+            navController.navigationBar.tintColor = .lightGray
+            sourceView.navigationController?.present(navController,
+                                                     animated: true, completion: nil)
+        }
+    }
 }
 

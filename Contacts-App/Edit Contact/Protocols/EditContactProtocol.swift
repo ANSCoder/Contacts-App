@@ -26,9 +26,9 @@ protocol EditContactWireFrameProtocol: class {
 }
 
 protocol EditContactPresenterProtocol: class {
-    var view: ContactDetailViewProtocol? { get set }
-    var interactor: ContactDetailsInteractorInputProtocol? { get set }
-    var wireFrame: ContactDetailWireFrameProtocol? { get set }
+    var view: EditContactViewProtocol? { get set }
+    var interactor: EditContactInteractorInputProtocol? { get set }
+    var wireFrame: EditContactWireFrameProtocol? { get set }
     var contact: ContactDetailModel? { get set }
     
     // VIEW -> PRESENTER
@@ -42,18 +42,18 @@ protocol EditContactInteractorOutputProtocol: class {
 }
 
 protocol EditContactInteractorInputProtocol: class {
-    var presenter: ContactDetailsInteractorOutputProtocol? { get set }
-    var remoteDatamanager: ContactDetailsRemoteDataInputProtocol? { get set }
+    var presenter: EditContactInteractorOutputProtocol? { get set }
+    var remoteDatamanager: EditContactRemoteDataInputProtocol? { get set }
     
     // PRESENTER -> INTERACTOR
-    func updateContactDetails(for details: [String: Any])
+    func updateContactDetails(for contactId: String, details: [String: Any])
 }
 
 protocol EditContactRemoteDataInputProtocol: class  {
-    var remoteRequestHandler: ContactDetailsRemoteDataOutputProtocol? { get set }
+    var remoteRequestHandler: EditContactRemoteDataOutputProtocol? { get set }
     
     // INTERACTOR -> REMOTEDATAMANAGER
-    func updateContactDetails(for contactId: String)
+    func updateContactDetails(for contactId: String, details: [String: Any])
 }
 
 protocol EditContactRemoteDataOutputProtocol: class  {

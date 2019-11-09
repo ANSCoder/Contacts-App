@@ -8,6 +8,27 @@
 
 import Foundation
 
-class EditContactPresenter{
+class EditContactPresenter: EditContactPresenterProtocol{
+    var view: EditContactViewProtocol?
     
+    var interactor: EditContactInteractorInputProtocol?
+    
+    var wireFrame: EditContactWireFrameProtocol?
+    
+    var contact: ContactDetailModel?
+    
+    func viewDidLoad() {
+        
+    }
+    
+}
+
+extension EditContactPresenter: EditContactInteractorOutputProtocol{
+    func didSubmittedContactDetails(_ result: Any) {
+        
+    }
+    
+    func onError() {
+        
+    }
 }

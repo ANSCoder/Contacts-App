@@ -8,6 +8,10 @@
 
 import Foundation
 
-class EditContactRemote{
-    
+class EditContactRemote: EditContactRemoteDataInputProtocol{
+    var remoteRequestHandler: EditContactRemoteDataOutputProtocol?
+
+    func updateContactDetails(for contactId: String, details: [String : Any]) {
+        
+    }
 }
