@@ -57,9 +57,28 @@
                     <view key="view" contentMode="scaleToFill" id="I7I-tG-D6m">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="WXt-if-xM7">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="bTn-C8-ITc" id="aCa-cf-Qwb"/>
+                                    <outlet property="delegate" destination="bTn-C8-ITc" id="Cfe-yb-oYH"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="tA8-ll-Pmf" firstAttribute="bottom" secondItem="WXt-if-xM7" secondAttribute="bottom" id="ABz-us-cLf"/>
+                            <constraint firstItem="tA8-ll-Pmf" firstAttribute="trailing" secondItem="WXt-if-xM7" secondAttribute="trailing" id="Ap9-mN-gg4"/>
+                            <constraint firstItem="WXt-if-xM7" firstAttribute="top" secondItem="tA8-ll-Pmf" secondAttribute="top" id="j5z-pC-9Z3"/>
+                            <constraint firstItem="WXt-if-xM7" firstAttribute="leading" secondItem="tA8-ll-Pmf" secondAttribute="leading" id="xXr-16-gZi"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="tA8-ll-Pmf"/>
                     </view>
+                    <connections>
+                        <outlet property="tableUpdateContact" destination="WXt-if-xM7" id="dRj-fM-qHL"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xnO-0x-xga" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

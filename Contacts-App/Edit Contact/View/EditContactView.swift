@@ -12,6 +12,8 @@ class EditContactView: UIViewController {
 
     var presenter: EditContactPresenterProtocol?
     let loadingViewController = LoadingViewController()
+    @IBOutlet weak var tableUpdateContact: UITableView!
+    
     
     //MARK: - Life Cycle
     override func viewDidLoad() {
