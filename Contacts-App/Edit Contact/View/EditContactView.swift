@@ -32,6 +32,17 @@ class EditContactView: UIViewController {
                                                             style: .plain,
                                                             target: self,
                                                             action: #selector(onTapDone))
+        tableViewSetup()
+    }
+    
+    func tableViewSetup(){
+        tableUpdateContact.register(UINib(nibName: "UpdateDetailsCell",
+                                        bundle: nil),
+                                  forCellReuseIdentifier: "UpdateDetailsCell")
+        tableUpdateContact.register(UINib(nibName: "ContactDetailsHeaderView",
+                                          bundle: nil),
+                                    forHeaderFooterViewReuseIdentifier: "ContactDetailsHeaderView")
+        tableUpdateContact.tableFooterView = UIView()
     }
     
     //MARK: - Update Contact Details

@@ -9,13 +9,19 @@
 import UIKit
 
 class EditContactHeaderView: UITableViewHeaderFooterView {
-
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
+    
+    @IBOutlet weak var profileImageView: UIImageView!
+    @IBOutlet weak var updateImageButton: UIButton!
+    
+    var subscribeButtonAction: (() -> ())?
+    
     override func draw(_ rect: CGRect) {
-        // Drawing code
+       updateImageButton.addTarget(self,
+                                   action: #selector(subscribeButtonTapped),
+                                   for: .touchUpInside)
     }
-    */
-
+    
+    @objc func subscribeButtonTapped(){
+         subscribeButtonAction?()
+    }
 }
