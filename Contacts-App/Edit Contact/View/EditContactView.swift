@@ -36,8 +36,9 @@ class EditContactView: UIViewController {
         
     }
     
+    //MARK: - Cancel Update Contact Details
     @objc func onTapCancel(){
-        
+        dismiss(animated: true, completion: nil)
     }
 }
 
