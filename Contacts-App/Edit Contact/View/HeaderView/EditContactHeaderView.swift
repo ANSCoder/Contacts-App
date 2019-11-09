@@ -16,6 +16,7 @@ class EditContactHeaderView: UITableViewHeaderFooterView {
     var subscribeButtonAction: (() -> ())?
     
     override func draw(_ rect: CGRect) {
+       profileImageView.makeRounded()
        updateImageButton.addTarget(self,
                                    action: #selector(subscribeButtonTapped),
                                    for: .touchUpInside)

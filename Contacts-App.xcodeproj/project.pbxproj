@@ -29,6 +29,8 @@
 		170DCCEB2376CC1B004F8F80 /* EditContactHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 170DCCEA2376CC1B004F8F80 /* EditContactHeaderView.xib */; };
 		170DCCEE2376D07E004F8F80 /* UpdateDetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 170DCCEC2376D07E004F8F80 /* UpdateDetailsCell.swift */; };
 		170DCCEF2376D07E004F8F80 /* UpdateDetailsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 170DCCED2376D07E004F8F80 /* UpdateDetailsCell.xib */; };
+		170DCCF12376E3F2004F8F80 /* DetailsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 170DCCF02376E3F2004F8F80 /* DetailsModel.swift */; };
+		170DCCF72376E9C3004F8F80 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 170DCCF62376E9C3004F8F80 /* IQKeyboardManagerSwift */; };
 		17D1C4F523733AE100754B99 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17D1C4F423733AE100754B99 /* AppDelegate.swift */; };
 		17D1C4F723733AE100754B99 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17D1C4F623733AE100754B99 /* SceneDelegate.swift */; };
 		17D1C4FC23733AE100754B99 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 17D1C4FA23733AE100754B99 /* Main.storyboard */; };
@@ -93,6 +95,7 @@
 		170DCCEA2376CC1B004F8F80 /* EditContactHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditContactHeaderView.xib; sourceTree = "<group>"; };
 		170DCCEC2376D07E004F8F80 /* UpdateDetailsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateDetailsCell.swift; sourceTree = "<group>"; };
 		170DCCED2376D07E004F8F80 /* UpdateDetailsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UpdateDetailsCell.xib; sourceTree = "<group>"; };
+		170DCCF02376E3F2004F8F80 /* DetailsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsModel.swift; sourceTree = "<group>"; };
 		17D1C4F123733AE100754B99 /* Contacts-App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Contacts-App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		17D1C4F423733AE100754B99 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		17D1C4F623733AE100754B99 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -128,6 +131,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				17D1C56523754F6800754B99 /* Alamofire in Frameworks */,
+				170DCCF72376E9C3004F8F80 /* IQKeyboardManagerSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -303,6 +307,7 @@
 			children = (
 				17D1C55E23752D5F00754B99 /* ContactList.swift */,
 				170DCCD02375E18B004F8F80 /* ContactDetailModel.swift */,
+				170DCCF02376E3F2004F8F80 /* DetailsModel.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -501,6 +506,7 @@
 			name = "Contacts-App";
 			packageProductDependencies = (
 				17D1C56423754F6800754B99 /* Alamofire */,
+				170DCCF62376E9C3004F8F80 /* IQKeyboardManagerSwift */,
 			);
 			productName = "Contacts-App";
 			productReference = 17D1C4F123733AE100754B99 /* Contacts-App.app */;
@@ -576,6 +582,7 @@
 			mainGroup = 17D1C4E823733AE100754B99;
 			packageReferences = (
 				17D1C56323754F6800754B99 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				170DCCF52376E9C3004F8F80 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
 			);
 			productRefGroup = 17D1C4F223733AE100754B99 /* Products */;
 			projectDirPath = "";
@@ -645,6 +652,7 @@
 				170DCCC523759360004F8F80 /* ExString.swift in Sources */,
 				17D1C567237565F000754B99 /* ContactDetailWireFrame.swift in Sources */,
 				170DCCE32376AEDC004F8F80 /* EditContactPresenter.swift in Sources */,
+				170DCCF12376E3F2004F8F80 /* DetailsModel.swift in Sources */,
 				17D1C55423752B8700754B99 /* ContactListInteractor.swift in Sources */,
 				17D1C55923752C1F00754B99 /* ContactListPresenter.swift in Sources */,
 				170DCCC92375AE26004F8F80 /* ContactDetailsHeaderView.swift in Sources */,
@@ -982,6 +990,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		170DCCF52376E9C3004F8F80 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/hackiftekhar/IQKeyboardManager.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.5.3;
+			};
+		};
 		17D1C56323754F6800754B99 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
@@ -993,6 +1009,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		170DCCF62376E9C3004F8F80 /* IQKeyboardManagerSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 170DCCF52376E9C3004F8F80 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */;
+			productName = IQKeyboardManagerSwift;
+		};
 		17D1C56423754F6800754B99 /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 17D1C56323754F6800754B99 /* XCRemoteSwiftPackageReference "Alamofire" */;

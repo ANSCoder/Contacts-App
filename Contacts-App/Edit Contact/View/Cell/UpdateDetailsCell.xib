@@ -24,9 +24,6 @@
                     </label>
                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="V6C-Tt-KfS">
                         <rect key="frame" x="134.5" y="5" width="243.5" height="34"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="34" id="aaE-fZ-a1e"/>
-                        </constraints>
                         <color key="textColor" red="0.36078691480000002" green="0.36077955369999998" blue="0.36078453059999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <textInputTraits key="textInputTraits"/>
@@ -38,8 +35,10 @@
                     <constraint firstItem="V6C-Tt-KfS" firstAttribute="leading" secondItem="8Kc-WG-Ags" secondAttribute="trailing" constant="8" id="BWX-Xn-Qvz"/>
                     <constraint firstItem="V6C-Tt-KfS" firstAttribute="width" secondItem="8Kc-WG-Ags" secondAttribute="width" multiplier="2.2" id="CO8-nH-RJJ"/>
                     <constraint firstItem="V6C-Tt-KfS" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="E9s-bF-GDP"/>
+                    <constraint firstItem="8Kc-WG-Ags" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="13" id="Ls2-AM-Y6e"/>
                     <constraint firstItem="8Kc-WG-Ags" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Vba-a0-NnY"/>
                     <constraint firstAttribute="trailing" secondItem="V6C-Tt-KfS" secondAttribute="trailing" constant="8" id="ack-c7-oBG"/>
+                    <constraint firstAttribute="bottom" secondItem="8Kc-WG-Ags" secondAttribute="bottom" constant="13" id="jfx-TY-27e"/>
                     <constraint firstItem="8Kc-WG-Ags" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="zhh-HK-R4W"/>
                 </constraints>
             </tableViewCellContentView>
