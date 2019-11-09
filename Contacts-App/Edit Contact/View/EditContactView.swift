@@ -21,6 +21,7 @@ class EditContactView: UIViewController {
     }
     
     func viewSetup(){
+        //Bar Buttons setup
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel",
                                                             style: .plain,
                                                             target: self,
@@ -33,7 +34,7 @@ class EditContactView: UIViewController {
     
     //MARK: - Update Contact Details
     @objc func onTapDone(){
-        
+        //Update contact Details
     }
     
     //MARK: - Cancel Update Contact Details

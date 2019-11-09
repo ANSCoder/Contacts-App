@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="EditContactHeaderView" customModule="Contacts_App" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="307"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eKs-2L-gkt">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="307"/>
+                    <subviews>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="placeholder_photo" translatesAutoresizingMaskIntoConstraints="NO" id="JMh-Z7-NkP">
+                            <rect key="frame" x="143" y="89.5" width="128" height="128"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="128" id="FYp-CV-p5Q"/>
+                                <constraint firstAttribute="width" constant="128" id="y1Z-ho-G3C"/>
+                            </constraints>
+                        </imageView>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="camera_button" translatesAutoresizingMaskIntoConstraints="NO" id="g3e-Te-KJt">
+                            <rect key="frame" x="217.5" y="171" width="57" height="53"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="53" id="3kq-wQ-koj"/>
+                                <constraint firstAttribute="width" constant="57" id="bz7-g5-vsv"/>
+                            </constraints>
+                        </imageView>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GnJ-2i-3tD">
+                            <rect key="frame" x="139.5" y="86" width="135" height="135"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="135" id="9DB-1v-TbY"/>
+                                <constraint firstAttribute="width" constant="135" id="XrB-Zv-0kC"/>
+                            </constraints>
+                            <state key="normal">
+                                <color key="titleColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" red="0.84418636560000004" green="0.95714634659999998" blue="0.93725508449999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="307" id="9cb-qT-ehA"/>
+                        <constraint firstItem="JMh-Z7-NkP" firstAttribute="centerY" secondItem="eKs-2L-gkt" secondAttribute="centerY" id="Ca1-xs-gu3"/>
+                        <constraint firstItem="GnJ-2i-3tD" firstAttribute="centerY" secondItem="eKs-2L-gkt" secondAttribute="centerY" id="XNO-P7-gnO"/>
+                        <constraint firstItem="GnJ-2i-3tD" firstAttribute="centerX" secondItem="eKs-2L-gkt" secondAttribute="centerX" id="eVH-Ly-4Zc"/>
+                        <constraint firstItem="g3e-Te-KJt" firstAttribute="top" secondItem="JMh-Z7-NkP" secondAttribute="bottom" constant="-46.5" id="hdV-C0-Gdk"/>
+                        <constraint firstItem="JMh-Z7-NkP" firstAttribute="centerX" secondItem="eKs-2L-gkt" secondAttribute="centerX" id="p5k-AT-FxR"/>
+                        <constraint firstItem="g3e-Te-KJt" firstAttribute="centerX" secondItem="JMh-Z7-NkP" secondAttribute="centerX" constant="39" id="rLd-EB-okL"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="eKs-2L-gkt" secondAttribute="trailing" id="9bI-Jf-Sfd"/>
+                <constraint firstItem="eKs-2L-gkt" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="KtR-ec-2ys"/>
+                <constraint firstItem="eKs-2L-gkt" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="MLh-Ra-XsY"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="eKs-2L-gkt" secondAttribute="bottom" id="dx7-MR-dxx"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <point key="canvasLocation" x="137.68115942028987" y="-64.620535714285708"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="camera_button" width="41" height="41"/>
+        <image name="placeholder_photo" width="126" height="126"/>
+    </resources>
+</document>
