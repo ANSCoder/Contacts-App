@@ -74,3 +74,33 @@ extension EditContactView: EditContactViewProtocol{
         loadingViewController.remove()
     }
 }
+
+//MARK: - Table View DataSource Methods
+extension EditContactView: UITableViewDataSource{
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 0
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "UpdateDetailsCell") as? UpdateDetailsCell else {
+            debugPrint("Cell Identifier not found!")
+            return UITableViewCell()
+        }
+        return cell
+    }
+}
+
+extension EditContactView: UITableViewDelegate{
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat{
+        return 346.0
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView?{
+        guard let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: "EditContactHeaderView" ) as? EditContactHeaderView else {
+            debugPrint("HeaderView Identifier not found!")
+            return nil
+        }
+        return headerView
+    }
+}
