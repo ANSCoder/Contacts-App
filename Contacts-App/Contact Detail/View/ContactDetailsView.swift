@@ -12,7 +12,7 @@ class ContactDetailsView: UIViewController {
     
     var presenter: ContactDetailPresenterProtocol?
     @IBOutlet weak var tableContactDetail: UITableView!
-    var contactDetail = ContactDetailList()
+    var contactDetail = [[String: String]]()
     let loadingViewController = LoadingViewController()
     
     //MARK: - Life Cycle
@@ -23,9 +23,9 @@ class ContactDetailsView: UIViewController {
     }
     
     func viewSetup(){
-        tableContactDetail.register(UINib(nibName: "ContactListCell",
+        tableContactDetail.register(UINib(nibName: "ContactDetailCell",
                                         bundle: nil),
-                                  forCellReuseIdentifier: "ContactListCell")
+                                  forCellReuseIdentifier: "ContactDetailCell")
         tableContactDetail.tableFooterView = UIView()
         presenter?.viewDidLoad()
     }
@@ -33,9 +33,19 @@ class ContactDetailsView: UIViewController {
 
 extension ContactDetailsView: ContactDetailViewProtocol {
     
+    func newJSONEncoder() -> JSONEncoder {
+        let encoder = JSONEncoder()
+        if #available(iOS 10.0, OSX 10.12, tvOS 10.0, watchOS 3.0, *) {
+            encoder.dateEncodingStrategy = .iso8601
+        }
+        return encoder
+    }
+    
     func showContactDetail(forContact details: ContactDetailModel) {
-        print(details)
-        contactDetail.append(details)
+        //Create contact Details
+        contactDetail = [["title": "mobile", "value": details.phoneNumber],
+                         ["title": "email", "value": details.email]]
+        tableContactDetail.reloadData()
     }
     
     func showError() {
@@ -51,6 +61,8 @@ extension ContactDetailsView: ContactDetailViewProtocol {
     }
 }
 
+
+//MARK: - Table View DataSource Methods
 extension ContactDetailsView: UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return contactDetail.count
@@ -62,7 +74,8 @@ extension ContactDetailsView: UITableViewDataSource{
             return UITableViewCell()
         }
         let model = contactDetail[indexPath.row]
-        cell.titleLabel.text = model.email
+        cell.titleLabel.text = model["title"]
+        cell.detailLabel.text = model["value"]
         return cell
     }
 }
