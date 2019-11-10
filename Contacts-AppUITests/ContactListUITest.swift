@@ -59,7 +59,7 @@ class ContactListUITest: XCTestCase {
         XCTAssertNotEqual(app.tables.cells.count, 0)
         
         app.tables.element(boundBy: 0).tap()
-               app.navigationBars["Contacts_App.ContactDetailsView"].buttons["Contact"].tap()
+        app.navigationBars["Contacts_App.ContactDetailsView"].buttons["Contact"].tap()
     }
     
 }
