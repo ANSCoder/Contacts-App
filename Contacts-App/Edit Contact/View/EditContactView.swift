@@ -116,6 +116,11 @@ extension EditContactView: UITableViewDataSource{
         let model = detailList[indexPath.row]
         cell.titleLabel.text = displayInformation[model.title]
         cell.detailsTextView.text = model.value
+        //Uodating values for the changes inside the text fields
+        cell.detailsTextUpdated = { [weak self] in
+            model.value = $0
+            self?.detailList[indexPath.row] = model
+        }
         return cell
     }
 }

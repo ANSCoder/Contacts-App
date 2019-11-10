@@ -9,19 +9,21 @@
 import UIKit
 
 class UpdateDetailsCell: UITableViewCell {
-
+    
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var detailsTextView: UITextField!
+    var detailsTextUpdated: ((_ value: String)->())?
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
+        detailsTextView.addTarget(self,
+                                  action: #selector(textFieldDidChange(_:)),
+                                  for: .editingChanged)
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    
+    @objc func textFieldDidChange(_ textField: UITextField) {
+        detailsTextUpdated?(detailsTextView.text ?? "")
     }
     
 }

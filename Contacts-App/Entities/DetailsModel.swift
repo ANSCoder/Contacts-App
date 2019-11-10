@@ -9,7 +9,7 @@
 import Foundation
 
 class DetailsModel {
-    let title, value: String
+    var title, value: String
     
     init(_ dic: [String: String]) {
         self.title = dic["title"] ?? ""
