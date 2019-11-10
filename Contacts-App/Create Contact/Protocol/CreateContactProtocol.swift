@@ -38,7 +38,7 @@ protocol CreateContactPresenterProtocol: class {
 
 protocol CreateContactInteractorOutputProtocol: class {
     // INTERACTOR -> PRESENTER
-    func didSubmittedContactDetails(_ result: [String: Any])
+    func didCreatedNewContact(_ result: [String: Any])
     func onError()
 }
 
@@ -47,7 +47,7 @@ protocol CreateContactInteractorInputProtocol: class {
     var remoteDatamanager: CreateContactRemoteDataInputProtocol? { get set }
     
     // PRESENTER -> INTERACTOR
-    func createContact(for contactId: String, details: [String: Any])
+    func createContact(for details: [String: Any])
 }
 
 protocol CreateContactRemoteDataInputProtocol: class  {

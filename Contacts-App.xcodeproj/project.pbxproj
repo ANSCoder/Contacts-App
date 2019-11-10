@@ -33,6 +33,10 @@
 		170DCCF72376E9C3004F8F80 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 170DCCF62376E9C3004F8F80 /* IQKeyboardManagerSwift */; };
 		170DCD0123781EC9004F8F80 /* CreateContactView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 170DCD0023781EC9004F8F80 /* CreateContactView.swift */; };
 		170DCD032378200E004F8F80 /* CreateContactProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 170DCD022378200E004F8F80 /* CreateContactProtocol.swift */; };
+		170DCD0523782199004F8F80 /* CreateContactPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 170DCD0423782199004F8F80 /* CreateContactPresenter.swift */; };
+		170DCD07237821B4004F8F80 /* CreateContactWireFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 170DCD06237821B4004F8F80 /* CreateContactWireFrame.swift */; };
+		170DCD09237821E5004F8F80 /* CreateContactInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 170DCD08237821E5004F8F80 /* CreateContactInteractor.swift */; };
+		170DCD0B237821FF004F8F80 /* CreateContactRemote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 170DCD0A237821FE004F8F80 /* CreateContactRemote.swift */; };
 		17D1C4F523733AE100754B99 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17D1C4F423733AE100754B99 /* AppDelegate.swift */; };
 		17D1C4F723733AE100754B99 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17D1C4F623733AE100754B99 /* SceneDelegate.swift */; };
 		17D1C4FC23733AE100754B99 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 17D1C4FA23733AE100754B99 /* Main.storyboard */; };
@@ -100,6 +104,10 @@
 		170DCCF02376E3F2004F8F80 /* DetailsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsModel.swift; sourceTree = "<group>"; };
 		170DCD0023781EC9004F8F80 /* CreateContactView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateContactView.swift; sourceTree = "<group>"; };
 		170DCD022378200E004F8F80 /* CreateContactProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateContactProtocol.swift; sourceTree = "<group>"; };
+		170DCD0423782199004F8F80 /* CreateContactPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateContactPresenter.swift; sourceTree = "<group>"; };
+		170DCD06237821B4004F8F80 /* CreateContactWireFrame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateContactWireFrame.swift; sourceTree = "<group>"; };
+		170DCD08237821E5004F8F80 /* CreateContactInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateContactInteractor.swift; sourceTree = "<group>"; };
+		170DCD0A237821FE004F8F80 /* CreateContactRemote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateContactRemote.swift; sourceTree = "<group>"; };
 		17D1C4F123733AE100754B99 /* Contacts-App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Contacts-App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		17D1C4F423733AE100754B99 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		17D1C4F623733AE100754B99 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -273,6 +281,7 @@
 		170DCCFB23781E74004F8F80 /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
+				170DCD0423782199004F8F80 /* CreateContactPresenter.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -288,6 +297,7 @@
 		170DCCFD23781E8D004F8F80 /* WireFrame */ = {
 			isa = PBXGroup;
 			children = (
+				170DCD06237821B4004F8F80 /* CreateContactWireFrame.swift */,
 			);
 			path = WireFrame;
 			sourceTree = "<group>";
@@ -295,6 +305,7 @@
 		170DCCFE23781E9B004F8F80 /* Interactor */ = {
 			isa = PBXGroup;
 			children = (
+				170DCD08237821E5004F8F80 /* CreateContactInteractor.swift */,
 			);
 			path = Interactor;
 			sourceTree = "<group>";
@@ -302,6 +313,7 @@
 		170DCCFF23781EA9004F8F80 /* Remote */ = {
 			isa = PBXGroup;
 			children = (
+				170DCD0A237821FE004F8F80 /* CreateContactRemote.swift */,
 			);
 			path = Remote;
 			sourceTree = "<group>";
@@ -694,10 +706,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				170DCD0B237821FF004F8F80 /* CreateContactRemote.swift in Sources */,
 				17D1C55B23752C8E00754B99 /* ContactListWireFrame.swift in Sources */,
 				17D1C55D23752CD100754B99 /* ContactListProtocols.swift in Sources */,
 				170DCCD72375E365004F8F80 /* ContactDetailsRemote.swift in Sources */,
 				170DCD0123781EC9004F8F80 /* CreateContactView.swift in Sources */,
+				170DCD0523782199004F8F80 /* CreateContactPresenter.swift in Sources */,
 				17D1C55F23752D5F00754B99 /* ContactList.swift in Sources */,
 				17D1C542237493DD00754B99 /* ExUIViewController.swift in Sources */,
 				17D1C4F523733AE100754B99 /* AppDelegate.swift in Sources */,
@@ -722,6 +736,8 @@
 				170DCCE52376BA29004F8F80 /* EditContactProtocol.swift in Sources */,
 				170DCCCE2375B355004F8F80 /* ContactDetailCell.swift in Sources */,
 				170DCCE12376AEAA004F8F80 /* EditContactRemote.swift in Sources */,
+				170DCD07237821B4004F8F80 /* CreateContactWireFrame.swift in Sources */,
+				170DCD09237821E5004F8F80 /* CreateContactInteractor.swift in Sources */,
 				170DCCDE2376AE89004F8F80 /* EditContactWireFrame.swift in Sources */,
 				17D1C4F723733AE100754B99 /* SceneDelegate.swift in Sources */,
 				170DCCB62375805E004F8F80 /* LoadingViewController.swift in Sources */,
