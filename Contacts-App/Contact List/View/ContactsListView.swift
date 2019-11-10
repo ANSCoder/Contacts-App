@@ -29,6 +29,21 @@ class ContactsListView: UIViewController {
         tableContactList.estimatedRowHeight = 64.0
         tableContactList.rowHeight = UITableView.automaticDimension
         tableContactList.tableFooterView = UIView()
+        addObserver()
+    }
+    
+    func addObserver(){
+        NotificationCenter
+            .default
+            .addObserver(forName: .refreshHomeView,
+                         object: nil,
+                         queue: nil) { [weak self] _ in
+                            self?.presenter?.viewDidLoad()
+        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         presenter?.viewDidLoad()
     }
     
@@ -40,13 +55,20 @@ class ContactsListView: UIViewController {
 
 extension ContactsListView: ContactListViewProtocol {
     
+    func contactDeletedSuccessfully() {
+        //Refresh view data
+        DispatchQueue.main.async { [weak self] in
+            self?.presenter?.viewDidLoad()
+        }
+    }
+    
     func showContacts(with contacts: ContactList){
         contactList = contacts
         tableContactList.reloadData()
     }
     
     func showError() {
-       showAleartViewwithTitle("Error!", message: "Something went wrong!")
+        showAleartViewwithTitle("Error!", message: "Something went wrong!")
     }
     
     func showLoading() {
@@ -97,5 +119,15 @@ extension ContactsListView: UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
         presenter?.showContactDetail(forContact: contactList[indexPath.row])
+    }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if (editingStyle == .delete) {
+            presenter?.requestForDelete(String(contactList[indexPath.row].id))
+        }
     }
 }

@@ -38,6 +38,7 @@
 		170DCD09237821E5004F8F80 /* CreateContactInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 170DCD08237821E5004F8F80 /* CreateContactInteractor.swift */; };
 		170DCD0B237821FF004F8F80 /* CreateContactRemote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 170DCD0A237821FE004F8F80 /* CreateContactRemote.swift */; };
 		170DCD0D2378283B004F8F80 /* DisplayInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 170DCD0C2378283B004F8F80 /* DisplayInformation.swift */; };
+		170DCD0F23787736004F8F80 /* ExNotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 170DCD0E23787736004F8F80 /* ExNotificationCenter.swift */; };
 		17D1C4F523733AE100754B99 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17D1C4F423733AE100754B99 /* AppDelegate.swift */; };
 		17D1C4F723733AE100754B99 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17D1C4F623733AE100754B99 /* SceneDelegate.swift */; };
 		17D1C4FC23733AE100754B99 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 17D1C4FA23733AE100754B99 /* Main.storyboard */; };
@@ -110,6 +111,7 @@
 		170DCD08237821E5004F8F80 /* CreateContactInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateContactInteractor.swift; sourceTree = "<group>"; };
 		170DCD0A237821FE004F8F80 /* CreateContactRemote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateContactRemote.swift; sourceTree = "<group>"; };
 		170DCD0C2378283B004F8F80 /* DisplayInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayInformation.swift; sourceTree = "<group>"; };
+		170DCD0E23787736004F8F80 /* ExNotificationCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExNotificationCenter.swift; sourceTree = "<group>"; };
 		17D1C4F123733AE100754B99 /* Contacts-App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Contacts-App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		17D1C4F423733AE100754B99 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		17D1C4F623733AE100754B99 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -394,6 +396,7 @@
 				17D1C541237493DD00754B99 /* ExUIViewController.swift */,
 				170DCCC423759360004F8F80 /* ExString.swift */,
 				170DCCD82376A66A004F8F80 /* ExUIImageView.swift */,
+				170DCD0E23787736004F8F80 /* ExNotificationCenter.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -719,6 +722,7 @@
 				17D1C542237493DD00754B99 /* ExUIViewController.swift in Sources */,
 				17D1C4F523733AE100754B99 /* AppDelegate.swift in Sources */,
 				17D1C55723752BF000754B99 /* ContactListRemote.swift in Sources */,
+				170DCD0F23787736004F8F80 /* ExNotificationCenter.swift in Sources */,
 				170DCCD92376A66A004F8F80 /* ExUIImageView.swift in Sources */,
 				170DCCD42375E33B004F8F80 /* ContactDetailsInteractor.swift in Sources */,
 				17D1C56F23756F7A00754B99 /* ContactDetailsView.swift in Sources */,

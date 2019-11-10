@@ -22,12 +22,7 @@ class ContactDetailsView: UIViewController {
         super.viewDidLoad()
         
         viewSetup()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-         presenter?.viewDidLoad()
+        presenter?.viewDidLoad()
     }
     
     func viewSetup(){
@@ -37,12 +32,23 @@ class ContactDetailsView: UIViewController {
                                                             style: .plain,
                                                             target: self,
                                                             action: #selector(onTapEditContact))
+        
+        NotificationCenter
+            .default
+            .addObserver(forName: .refreshDetailsView,
+                         object: nil,
+                         queue: nil) { [weak self] _ in
+                            guard self?.contactDetailsList.count != 0 else {
+                                return
+                            }
+                            self?.makeFavourite(self?.contactDetailsList[0])
+        }
     }
     
     func tableViewSetup(){
         tableContactDetail.register(UINib(nibName: "ContactDetailCell",
-                                        bundle: nil),
-                                  forCellReuseIdentifier: "ContactDetailCell")
+                                          bundle: nil),
+                                    forCellReuseIdentifier: "ContactDetailCell")
         tableContactDetail.register(UINib(nibName: "ContactDetailsHeaderView",
                                           bundle: nil),
                                     forHeaderFooterViewReuseIdentifier: "ContactDetailsHeaderView")
@@ -59,7 +65,7 @@ class ContactDetailsView: UIViewController {
     
     func callNumber(phoneNumber: String) {
         if let phoneCallURL = URL(string: "tel://\(phoneNumber)") {
-
+            
             let application:UIApplication = UIApplication.shared
             if (application.canOpenURL(phoneCallURL)) {
                 if #available(iOS 10.0, *) {
@@ -67,7 +73,7 @@ class ContactDetailsView: UIViewController {
                                      completionHandler: nil)
                 } else {
                     // Fallback on earlier versions
-                     application.openURL(phoneCallURL as URL)
+                    application.openURL(phoneCallURL as URL)
                 }
             }
         }
@@ -82,7 +88,7 @@ class ContactDetailsView: UIViewController {
             let jsonEncoder = JSONEncoder()
             let jsonData = try jsonEncoder.encode(details)
             let dictionary = try JSONSerialization.jsonObject(with: jsonData,
-                                                       options: []) as? [String: Any] ?? [:]
+                                                              options: []) as? [String: Any] ?? [:]
             presenter?.contactAddToFavourite(for: String(details.id),
                                              details: dictionary)
         } catch {
@@ -99,7 +105,7 @@ extension ContactDetailsView: ContactDetailViewProtocol {
             self?.setUpDataForUI(details)
         }
     }
-
+    
     func showContactDetail(forContact details: ContactDetailModel) {
         DispatchQueue.main.async {[weak self] in
             self?.setUpDataForUI(details)
@@ -188,10 +194,10 @@ extension ContactDetailsView: MFMailComposeViewControllerDelegate{
             mail.setMessageBody("<p>You're so awesome!</p>", isHTML: true)
             present(mail, animated: true)
         } else {
-           showAleartViewwithTitle("Error!", message: "Email not configured.")
+            showAleartViewwithTitle("Error!", message: "Email not configured.")
         }
     }
-
+    
     func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
         controller.dismiss(animated: true)
     }
@@ -207,10 +213,10 @@ extension ContactDetailsView: MFMessageComposeViewControllerDelegate{
             controller.messageComposeDelegate = self
             present(controller, animated: true, completion: nil)
         } else {
-           showAleartViewwithTitle("Error!", message: "Unable to send message.")
+            showAleartViewwithTitle("Error!", message: "Unable to send message.")
         }
     }
-
+    
     func messageComposeViewController(_ controller: MFMessageComposeViewController,
                                       didFinishWith result: MessageComposeResult){
         

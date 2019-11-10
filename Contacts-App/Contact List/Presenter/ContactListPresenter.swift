@@ -19,6 +19,7 @@ class ContactListPresenter: ContactListPresenterProtocol {
         interactor?.retrieveContactList()
     }
     
+    //MARK: - Navigation
     func showContactDetail(forContact contact: ContactModel) {
         wireFrame?.presentContactDetailScreen(from: view!, forContact: contact)
     }
@@ -26,9 +27,19 @@ class ContactListPresenter: ContactListPresenterProtocol {
     func createNewContact() {
         wireFrame?.presentCreateContactScreen(from: view!)
     }
+    
+    func requestForDelete(_ contact: String) {
+        view?.showLoading()
+        interactor?.deleteContact(for: contact)
+    }
 }
 
 extension ContactListPresenter: ContactListInteractorOutputProtocol {
+    
+    func didContactDeleteSuccessfully() {
+        view?.hideLoading()
+        view?.contactDeletedSuccessfully()
+    }
     
     func didRetrieveContacts(_ contacts: ContactList) {
         view?.hideLoading()

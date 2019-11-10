@@ -14,6 +14,8 @@ protocol ContactListViewProtocol: class {
     // PRESENTER -> VIEW
     func showContacts(with contacts: ContactList)
     
+    func contactDeletedSuccessfully()
+    
     func showError()
     
     func showLoading()
@@ -37,12 +39,14 @@ protocol ContactListPresenterProtocol: class {
     // VIEW -> PRESENTER
     func viewDidLoad()
     func showContactDetail(forContact contact: ContactModel)
+    func requestForDelete(_ contact: String)
     func createNewContact()
 }
 
 protocol ContactListInteractorOutputProtocol: class {
     // INTERACTOR -> PRESENTER
     func didRetrieveContacts(_ contacts: ContactList)
+    func didContactDeleteSuccessfully()
     func onError()
 }
 
@@ -52,6 +56,7 @@ protocol ContactListInteractorInputProtocol: class {
     
     // PRESENTER -> INTERACTOR
     func retrieveContactList()
+    func deleteContact(for contactId: String)
 }
 
 protocol ContactListDataInputProtocol: class  {
@@ -63,11 +68,13 @@ protocol ContactListRemoteDataInputProtocol: class  {
     
     // INTERACTOR -> REMOTEDATAMANAGER
     func fetchContactList()
+    func proceedDeleteContact(for contactId: String)
 }
 
 protocol ContactListRemoteDataOutputProtocol: class  {
     // REMOTEDATAMANAGER -> INTERACTOR
     func onContactsRetrieved(_ contacts: ContactList)
+    func onDeleteContactSuccessFully()
     func onError()
 }
 

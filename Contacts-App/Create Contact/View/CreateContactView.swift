@@ -64,20 +64,20 @@ class CreateContactView: UIViewController {
     @objc func onTapDone(){
         //Update contact Details
         contactDetails["first_name"] = detailList.filter{ $0.title == "first_name"}
-                                                 .map{$0.value}.first ?? ""
+            .map{$0.value}.first ?? ""
         contactDetails["last_name"]  = detailList.filter{ $0.title == "last_name"}
-                                                 .map{$0.value}.first ?? ""
+            .map{$0.value}.first ?? ""
         contactDetails["phone_number"] = detailList.filter{ $0.title == "phone_number"}
-                                                 .map{$0.value}.first ?? ""
+            .map{$0.value}.first ?? ""
         contactDetails["email"] = detailList.filter{ $0.title == "email"}
-                                                 .map{$0.value}.first ?? ""
+            .map{$0.value}.first ?? ""
         contactDetails["favorite"] = false
         
         //If image updated then
         if profileImage != nil {
-           let imageData = profileImage?.jpegData(compressionQuality: 4.0)
-           let imageStr = imageData?.base64EncodedString(options: .lineLength64Characters) ?? ""
-           contactDetails["profile_pic"] = imageStr
+            let imageData = profileImage?.jpegData(compressionQuality: 4.0)
+            let imageStr = imageData?.base64EncodedString(options: .lineLength64Characters) ?? ""
+            contactDetails["profile_pic"] = imageStr
         }
         contactDetails["profile_pic"] = "/images/missing.png"
         //updating contact details
@@ -93,6 +93,8 @@ class CreateContactView: UIViewController {
 extension CreateContactView: CreateContactViewProtocol{
     
     func showError() {
+        showAleartViewwithTitle("Error!",
+                                message: "Please check your input entries.")
     }
     
     func showLoading() {
@@ -108,6 +110,11 @@ extension CreateContactView: CreateContactViewProtocol{
         showAlertWithMessage("Contact created successfully!") { [weak self] in
             DispatchQueue.main.async {
                 self?.dismiss(animated: true, completion: nil)
+                
+                NotificationCenter
+                    .default
+                    .post(name: .refreshHomeView,
+                          object: nil)
             }
         }
     }
@@ -145,9 +152,9 @@ extension CreateContactView: UITableViewDelegate, UINavigationControllerDelegate
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView?{
         guard let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: "EditContactHeaderView" )
-                                                                    as? EditContactHeaderView else {
-            debugPrint("HeaderView Identifier not found!")
-            return nil
+            as? EditContactHeaderView else {
+                debugPrint("HeaderView Identifier not found!")
+                return nil
         }
         headerView.subscribeButtonAction = { [weak self] in
             //chose image

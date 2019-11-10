@@ -17,9 +17,17 @@ class ContactListInteractor: ContactListInteractorInputProtocol {
     func retrieveContactList() {
         remoteDatamanager?.fetchContactList()
     }
+    
+    func deleteContact(for contactId: String) {
+        remoteDatamanager?.proceedDeleteContact(for: contactId)
+    }
 }
 
 extension ContactListInteractor: ContactListRemoteDataOutputProtocol {
+    
+    func onDeleteContactSuccessFully() {
+        presenter?.didContactDeleteSuccessfully()
+    }
     
     func onContactsRetrieved(_ contacts: ContactList) {
         presenter?.didRetrieveContacts(contacts)

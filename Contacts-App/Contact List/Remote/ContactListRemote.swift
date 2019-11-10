@@ -26,4 +26,20 @@ class ContactListRemote: ContactListRemoteDataInputProtocol{
                 }
         }
     }
+    
+    func proceedDeleteContact(for contactId: String){
+        let urlPath = Endpoints.contactDetail.fetch(contactId).url
+        
+        AF.request(urlPath,
+                   method: .delete)
+            .validate()
+            .responseJSON {[weak self] response in
+                    switch response.result {
+                    case .success:
+                        self?.remoteRequestHandler?.onDeleteContactSuccessFully()
+                    case .failure( _):
+                        self?.remoteRequestHandler?.onError()
+                    }
+        }
+    }
 }

@@ -91,6 +91,10 @@ extension EditContactView: EditContactViewProtocol{
         showAlertWithMessage("Contact Updated successfully!") { [weak self] in
             DispatchQueue.main.async {
                 self?.dismiss(animated: true, completion: nil)
+                NotificationCenter
+                    .default
+                    .post(name: .refreshDetailsView,
+                          object: nil)
             }
         }
     }
