@@ -91,8 +91,8 @@ class CreateContactView: UIViewController {
 }
 
 extension CreateContactView: CreateContactViewProtocol{
+    
     func showError() {
-        
     }
     
     func showLoading() {
@@ -103,8 +103,13 @@ extension CreateContactView: CreateContactViewProtocol{
         loadingViewController.remove()
     }
     
+    //MARK: - Contact created response
     func onSuccessfullyCreate(_ contacts: [String : Any]) {
-        dismiss(animated: true, completion: nil)
+        showAlertWithMessage("Contact created succfully!") { [weak self] in
+            DispatchQueue.main.async {
+                self?.dismiss(animated: true, completion: nil)
+            }
+        }
     }
     
 }

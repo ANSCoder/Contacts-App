@@ -28,8 +28,7 @@ class CreateContactRemote: CreateContactRemoteDataInputProtocol {
                 switch response.result {
                 case .success(let value):
                     self.remoteRequestHandler?.onSuccessfullyCreated(value as? [String: Any] ?? [:])
-                case .failure(let error):
-                    debugPrint(error)
+                case .failure( _):
                     self.remoteRequestHandler?.onError()
                 }
         }

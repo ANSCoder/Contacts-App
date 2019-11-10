@@ -24,13 +24,12 @@ class EditContactRemote: EditContactRemoteDataInputProtocol{
                    encoding: JSONEncoding.default,
                    headers: headers)
             .validate()
-            .responseJSON { response in
+            .responseJSON {[weak self] response in
                     switch response.result {
                     case .success(let value):
-                        self.remoteRequestHandler?.onSuccessfullyUpdated(value as? [String: Any] ?? [:])
-                    case .failure(let error):
-                        debugPrint(error.failedStringEncoding ?? "")
-                        self.remoteRequestHandler?.onError()
+                        self?.remoteRequestHandler?.onSuccessfullyUpdated(value as? [String: Any] ?? [:])
+                    case .failure( _):
+                        self?.remoteRequestHandler?.onError()
                     }
         }
     }
