@@ -16,12 +16,14 @@ class ContactsListView: UIViewController {
     let loadingViewController = LoadingViewController()
     let imageProvider = ImageProvider()
     
+    //MARK : - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
         viewSetup()
     }
     
+    //MARK: - Setup for the Table View
     func viewSetup(){
         tableContactList.register(UINib(nibName: "ContactListCell",
                                         bundle: nil),
@@ -53,6 +55,7 @@ class ContactsListView: UIViewController {
     }
 }
 
+//MARK: - Networking API response & Data setup for View
 extension ContactsListView: ContactListViewProtocol {
     
     func contactDeletedSuccessfully() {
@@ -80,7 +83,7 @@ extension ContactsListView: ContactListViewProtocol {
     }
 }
 
-
+//MARK: - Table View DataSource
 extension ContactsListView: UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         contactList.count
@@ -115,6 +118,7 @@ extension ContactsListView: UITableViewDataSource{
     
 }
 
+//MARK: - TableView Delegate Methods
 extension ContactsListView: UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
