@@ -40,6 +40,9 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="1NU-bH-CDl">
                             <color key="tintColor" red="0.31372549019607843" green="0.8901960784313725" blue="0.76078431372549016" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <connections>
+                                <action selector="createNewContact:" destination="BYZ-38-t0r" id="B9Y-QY-lNF"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
@@ -49,6 +52,40 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1047.8260869565217" y="69.642857142857139"/>
+        </scene>
+        <!--Create Contact View-->
+        <scene sceneID="pd2-Sg-MY4">
+            <objects>
+                <viewController storyboardIdentifier="CreateContactView" id="6Xk-Xs-fKU" customClass="CreateContactView" customModule="Contacts_App" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="tA7-1h-Yqa">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="wJv-Oz-nAy">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="6Xk-Xs-fKU" id="Bvk-az-Rhw"/>
+                                    <outlet property="delegate" destination="6Xk-Xs-fKU" id="fPG-RM-42b"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="Noa-xw-GwL" firstAttribute="trailing" secondItem="wJv-Oz-nAy" secondAttribute="trailing" id="ChD-Ri-Fah"/>
+                            <constraint firstItem="wJv-Oz-nAy" firstAttribute="top" secondItem="Noa-xw-GwL" secondAttribute="top" id="Jiy-l6-aTZ"/>
+                            <constraint firstItem="wJv-Oz-nAy" firstAttribute="leading" secondItem="Noa-xw-GwL" secondAttribute="leading" id="dcC-xd-xgb"/>
+                            <constraint firstItem="Noa-xw-GwL" firstAttribute="bottom" secondItem="wJv-Oz-nAy" secondAttribute="bottom" id="w6m-V4-wYk"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Noa-xw-GwL"/>
+                    </view>
+                    <connections>
+                        <outlet property="tableCreateContact" destination="wJv-Oz-nAy" id="RAY-tt-j2R"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1dR-qm-pMe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1705" y="69"/>
         </scene>
         <!--Edit Contact View-->
         <scene sceneID="BUx-eu-MG1">

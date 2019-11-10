@@ -44,5 +44,15 @@ class ContactListWireFrame: ContactListWireFrameProtocol {
         }
     }
     
+    func presentCreateContactScreen(from view: ContactListViewProtocol) {
+        let createContactViewController = CreateContactWireFrame.creatNewContactView()
+           
+           if let sourceView = view as? UIViewController {
+               let navController = UINavigationController(rootViewController: createContactViewController)
+               navController.navigationBar.tintColor = .lightGray
+               sourceView.navigationController?.present(navController,
+                                                        animated: true, completion: nil)
+           }
+    }
     
 }

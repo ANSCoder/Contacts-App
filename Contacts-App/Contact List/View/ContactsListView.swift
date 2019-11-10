@@ -31,6 +31,11 @@ class ContactsListView: UIViewController {
         tableContactList.tableFooterView = UIView()
         presenter?.viewDidLoad()
     }
+    
+    //MARK: - Update Contact Details
+    @IBAction func createNewContact(_ sender: UIBarButtonItem) {
+        presenter?.createNewContact()
+    }
 }
 
 extension ContactsListView: ContactListViewProtocol {

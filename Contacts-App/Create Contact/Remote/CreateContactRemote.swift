@@ -20,7 +20,7 @@ class CreateContactRemote: CreateContactRemoteDataInputProtocol {
         
          AF.request(urlPath,
                     method: .post,
-                    parameters: nil,
+                    parameters: details,
                     encoding: JSONEncoding.default,
                     headers: headers)
              .validate()
@@ -29,7 +29,7 @@ class CreateContactRemote: CreateContactRemoteDataInputProtocol {
                      case .success(let value):
                          self.remoteRequestHandler?.onSuccessfullyCreated(value as? [String: Any] ?? [:])
                      case .failure(let error):
-                         debugPrint(error.failedStringEncoding ?? "")
+                         debugPrint(error)
                          self.remoteRequestHandler?.onError()
                      }
          }

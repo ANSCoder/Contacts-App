@@ -13,10 +13,6 @@ class EditContactView: UIViewController {
     var presenter: EditContactPresenterProtocol?
     let loadingViewController = LoadingViewController()
     @IBOutlet weak var tableUpdateContact: UITableView!
-    let displayInformation = ["first_name" : "First Name",
-                              "last_name" : "Last Name",
-                              "phone_number" : "Mobile",
-                              "email" : "Email"]
     var contactImage: String!
     var contactDetails = [String: Any]()
     var detailList = [DetailsModel]()

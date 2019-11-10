@@ -20,7 +20,7 @@ class EditContactRemote: EditContactRemoteDataInputProtocol{
        
         AF.request(urlPath,
                    method: .put,
-                   parameters: nil,
+                   parameters: details,
                    encoding: JSONEncoding.default,
                    headers: headers)
             .validate()
