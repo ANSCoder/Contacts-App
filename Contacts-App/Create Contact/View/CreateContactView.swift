@@ -63,10 +63,14 @@ class CreateContactView: UIViewController {
     //MARK: - Update Contact Details
     @objc func onTapDone(){
         //Update contact Details
-        contactDetails["first_name"] = detailList.filter{ $0.title == "first_name"}.map{$0.value}
-        contactDetails["last_name"]  = detailList.filter{ $0.title == "last_name"}.map{$0.value}
-        contactDetails["phone_number"] = detailList.filter{ $0.title == "phone_number"}.map{$0.value}
-        contactDetails["email"] = detailList.filter{ $0.title == "email"}.map{$0.value}
+        contactDetails["first_name"] = detailList.filter{ $0.title == "first_name"}
+                                                 .map{$0.value}.first ?? ""
+        contactDetails["last_name"]  = detailList.filter{ $0.title == "last_name"}
+                                                 .map{$0.value}.first ?? ""
+        contactDetails["phone_number"] = detailList.filter{ $0.title == "phone_number"}
+                                                 .map{$0.value}.first ?? ""
+        contactDetails["email"] = detailList.filter{ $0.title == "email"}
+                                                 .map{$0.value}.first ?? ""
         contactDetails["favorite"] = false
         
         //If image updated then
@@ -75,10 +79,7 @@ class CreateContactView: UIViewController {
            let imageStr = imageData?.base64EncodedString(options: .lineLength64Characters) ?? ""
            contactDetails["profile_pic"] = imageStr
         }
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-        contactDetails["created_at"] = formatter.string(from: Date())
-        contactDetails["profile_pic"] = "http://gojek-contacts-app.herokuapp.com/images/missing.png"
+        contactDetails["profile_pic"] = "/images/missing.png"
         //updating contact details
         presenter?.createContact(for: contactDetails)
     }
