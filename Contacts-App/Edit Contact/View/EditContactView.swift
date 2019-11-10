@@ -78,6 +78,7 @@ class EditContactView: UIViewController {
            let imageStr = imageData?.base64EncodedString(options: .lineLength64Characters) ?? ""
            contactDetails["profile_pic"] = imageStr
         }
+        //updating contact details
         presenter?.updateContactDetails(for: String(contactDetails["id"] as? Int ?? 0),
                                         details: contactDetails)
     }
@@ -92,14 +93,6 @@ extension EditContactView: EditContactViewProtocol{
     
     func onSuccessfullyUpdated(_ contacts: [String : Any]) {
         dismiss(animated: true, completion: nil)
-    }
-    
-    func newJSONEncoder() -> JSONEncoder {
-        let encoder = JSONEncoder()
-        if #available(iOS 10.0, OSX 10.12, tvOS 10.0, watchOS 3.0, *) {
-            encoder.dateEncodingStrategy = .iso8601
-        }
-        return encoder
     }
     
     func showContactDetail(forContact details: ContactDetailModel) {
