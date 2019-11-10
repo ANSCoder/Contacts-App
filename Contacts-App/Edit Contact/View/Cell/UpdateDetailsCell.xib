@@ -26,7 +26,7 @@
                         <rect key="frame" x="134.5" y="5" width="243.5" height="34"/>
                         <color key="textColor" red="0.36078691480000002" green="0.36077955369999998" blue="0.36078453059999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                        <textInputTraits key="textInputTraits"/>
+                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
                     </textField>
                 </subviews>
                 <color key="backgroundColor" red="0.97647720579999997" green="0.97645896669999999" blue="0.97647136450000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>

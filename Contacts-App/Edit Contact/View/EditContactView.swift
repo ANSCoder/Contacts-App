@@ -88,7 +88,11 @@ class EditContactView: UIViewController {
 extension EditContactView: EditContactViewProtocol{
     
     func onSuccessfullyUpdated(_ contacts: [String : Any]) {
-        dismiss(animated: true, completion: nil)
+        showAlertWithMessage("Contact Updated successfully!") { [weak self] in
+            DispatchQueue.main.async {
+                self?.dismiss(animated: true, completion: nil)
+            }
+        }
     }
     
     func showContactDetail(forContact details: ContactDetailModel) {
@@ -109,7 +113,8 @@ extension EditContactView: EditContactViewProtocol{
     }
     
     func showError() {
-        
+        showAleartViewwithTitle("Error!",
+                                message: "Please check your input entries.")
     }
     
     func showLoading() {

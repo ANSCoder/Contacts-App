@@ -105,7 +105,7 @@ extension CreateContactView: CreateContactViewProtocol{
     
     //MARK: - Contact created response
     func onSuccessfullyCreate(_ contacts: [String : Any]) {
-        showAlertWithMessage("Contact created succfully!") { [weak self] in
+        showAlertWithMessage("Contact created successfully!") { [weak self] in
             DispatchQueue.main.async {
                 self?.dismiss(animated: true, completion: nil)
             }
