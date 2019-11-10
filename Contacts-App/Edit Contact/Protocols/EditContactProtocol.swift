@@ -19,6 +19,8 @@ protocol EditContactViewProtocol: class {
     func showLoading()
     
     func hideLoading()
+    
+    func onSuccessfullyUpdated(_ contacts: [String: Any])
 }
 
 protocol EditContactWireFrameProtocol: class {
@@ -33,11 +35,13 @@ protocol EditContactPresenterProtocol: class {
     
     // VIEW -> PRESENTER
     func viewDidLoad()
+    
+    func updateContactDetails(for contactId: String, details: [String: Any])
 }
 
 protocol EditContactInteractorOutputProtocol: class {
     // INTERACTOR -> PRESENTER
-    func didSubmittedContactDetails(_ result: Any)
+    func didSubmittedContactDetails(_ result: [String: Any])
     func onError()
 }
 
@@ -58,7 +62,7 @@ protocol EditContactRemoteDataInputProtocol: class  {
 
 protocol EditContactRemoteDataOutputProtocol: class  {
     // REMOTEDATAMANAGER -> INTERACTOR
-    func onSuccessfullyUpdated(_ contacts: ContactDetailModel)
+    func onSuccessfullyUpdated(_ contacts: [String: Any])
     func onError()
 }
 

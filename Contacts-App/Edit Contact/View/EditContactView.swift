@@ -18,8 +18,16 @@ class EditContactView: UIViewController {
                               "phone_number" : "Mobile",
                               "email" : "Email"]
     var contactImage: String!
+    var contactDetails = [String: Any]()
     var detailList = [DetailsModel]()
     let imageProvider = ImageProvider()
+    var imagePicker: UIImagePickerController!
+    var profileImage: UIImage?
+    var subscribeImageSelection: ((UIImage) -> ())?
+    enum ImageSource {
+        case photoLibrary
+        case camera
+    }
     
     //MARK: - Life Cycle
     override func viewDidLoad() {
@@ -54,7 +62,24 @@ class EditContactView: UIViewController {
     
     //MARK: - Update Contact Details
     @objc func onTapDone(){
+        guard detailList.count != 0 else {
+            debugPrint("Data not found!")
+            return
+        }
         //Update contact Details
+        contactDetails["first_name"] = detailList.filter{ $0.title == "first_name"}.map{$0.value}
+        contactDetails["last_name"]  = detailList.filter{ $0.title == "last_name"}.map{$0.value}
+        contactDetails["phone_number"] = detailList.filter{ $0.title == "phone_number"}.map{$0.value}
+        contactDetails["email"] = detailList.filter{ $0.title == "email"}.map{$0.value}
+        
+        //If image updated then
+        if profileImage != nil {
+           let imageData = profileImage?.jpegData(compressionQuality: 4.0)
+           let imageStr = imageData?.base64EncodedString(options: .lineLength64Characters) ?? ""
+           contactDetails["profile_pic"] = imageStr
+        }
+        presenter?.updateContactDetails(for: String(contactDetails["id"] as? Int ?? 0),
+                                        details: contactDetails)
     }
     
     //MARK: - Cancel Update Contact Details
@@ -64,6 +89,10 @@ class EditContactView: UIViewController {
 }
 
 extension EditContactView: EditContactViewProtocol{
+    
+    func onSuccessfullyUpdated(_ contacts: [String : Any]) {
+        dismiss(animated: true, completion: nil)
+    }
     
     func newJSONEncoder() -> JSONEncoder {
         let encoder = JSONEncoder()
@@ -80,6 +109,7 @@ extension EditContactView: EditContactViewProtocol{
             let jsonData = try jsonEncoder.encode(details)
             let dic = try JSONSerialization.jsonObject(with: jsonData,
                                                        options: []) as? [String: Any] ?? [:]
+            contactDetails = dic
             let modifiedDetails = dic.map{["title":"\($0)", "value": "\($1)"]}
                 .filter{ displayInformation.keys.contains($0["title"] ?? "")}
             detailList = modifiedDetails.map(DetailsModel.init)
@@ -125,7 +155,7 @@ extension EditContactView: UITableViewDataSource{
     }
 }
 
-extension EditContactView: UITableViewDelegate{
+extension EditContactView: UITableViewDelegate, UINavigationControllerDelegate{
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat{
         return 307.0
@@ -148,6 +178,42 @@ extension EditContactView: UITableViewDelegate{
                 headerView.profileImageView.image = image
             })
         }
+        headerView.subscribeButtonAction = { [weak self] in
+            //chose image
+            guard UIImagePickerController.isSourceTypeAvailable(.camera) else {
+                self?.selectImageFrom(.photoLibrary)
+                return
+            }
+            self?.selectImageFrom(.camera)
+        }
+        subscribeImageSelection = {[weak self] selectedImage in
+            self?.profileImage = selectedImage
+            headerView.profileImageView.image = selectedImage
+        }
         return headerView
+    }
+}
+
+extension EditContactView: UIImagePickerControllerDelegate{
+    
+    func selectImageFrom(_ source: ImageSource){
+        imagePicker =  UIImagePickerController()
+        imagePicker.delegate = self
+        switch source {
+        case .camera:
+            imagePicker.sourceType = .camera
+        case .photoLibrary:
+            imagePicker.sourceType = .photoLibrary
+        }
+        present(imagePicker, animated: true, completion: nil)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]){
+        imagePicker.dismiss(animated: true, completion: nil)
+        guard let selectedImage = info[.originalImage] as? UIImage else {
+            print("Image not found!")
+            return
+        }
+        subscribeImageSelection?(selectedImage)
     }
 }

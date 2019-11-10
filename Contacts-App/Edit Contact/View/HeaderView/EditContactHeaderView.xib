@@ -16,7 +16,7 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eKs-2L-gkt">
                     <rect key="frame" x="0.0" y="0.0" width="414" height="307"/>
                     <subviews>
-                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="placeholder_photo" translatesAutoresizingMaskIntoConstraints="NO" id="JMh-Z7-NkP">
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" image="placeholder_photo" translatesAutoresizingMaskIntoConstraints="NO" id="JMh-Z7-NkP">
                             <rect key="frame" x="143" y="89.5" width="128" height="128"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="128" id="FYp-CV-p5Q"/>

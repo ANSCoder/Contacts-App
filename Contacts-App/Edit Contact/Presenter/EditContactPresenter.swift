@@ -9,6 +9,7 @@
 import Foundation
 
 class EditContactPresenter: EditContactPresenterProtocol{
+    
     var view: EditContactViewProtocol?
     var interactor: EditContactInteractorInputProtocol?
     var wireFrame: EditContactWireFrameProtocol?
@@ -18,17 +19,21 @@ class EditContactPresenter: EditContactPresenterProtocol{
         view?.showContactDetail(forContact: contact!)
     }
     
-    /*
-     ["profile_pic": /images/missing.png, "favorite": 1, "last_name": Kumar, "first_name": Puneet, "phone_number": +919971384493, "id": 13168, "updated_at": 2019-11-07T13:29:55.340Z, "created_at": 2019-11-03T09:45:50.144Z, "email": kumar.punet@gmail.com]
-     */
+    func updateContactDetails(for contactId: String, details: [String : Any]) {
+        view?.showLoading()
+        interactor?.updateContactDetails(for: contactId, details: details)
+    }
 }
 
 extension EditContactPresenter: EditContactInteractorOutputProtocol{
-    func didSubmittedContactDetails(_ result: Any) {
-        
+    
+    func didSubmittedContactDetails(_ result: [String : Any]) {
+        view?.hideLoading()
+        view?.onSuccessfullyUpdated(result)
     }
     
     func onError() {
-        
+        view?.hideLoading()
+        view?.showError()
     }
 }

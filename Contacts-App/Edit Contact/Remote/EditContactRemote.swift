@@ -7,11 +7,31 @@
 //
 
 import Foundation
+import Alamofire
 
 class EditContactRemote: EditContactRemoteDataInputProtocol{
     var remoteRequestHandler: EditContactRemoteDataOutputProtocol?
-
+    
     func updateContactDetails(for contactId: String, details: [String : Any]) {
-        
+        let headers: HTTPHeaders = [
+            "Content-Type": "application/json"
+        ]
+        let urlPath = Endpoints.contactDetail.fetch(contactId).url
+       
+        AF.request(urlPath,
+                   method: .put,
+                   parameters: nil,
+                   encoding: JSONEncoding.default,
+                   headers: headers)
+            .validate()
+            .responseJSON { response in
+                    switch response.result {
+                    case .success(let value):
+                        self.remoteRequestHandler?.onSuccessfullyUpdated(value as? [String: Any] ?? [:])
+                    case .failure(let error):
+                        debugPrint(error.failedStringEncoding ?? "")
+                        self.remoteRequestHandler?.onError()
+                    }
+        }
     }
 }

@@ -10,19 +10,20 @@ import Foundation
 
 class EditContactIntractor: EditContactInteractorInputProtocol{
     
-    
     var presenter: EditContactInteractorOutputProtocol?
     
     var remoteDatamanager: EditContactRemoteDataInputProtocol?
     
     func updateContactDetails(for contactId: String, details: [String : Any]) {
-        
+        remoteDatamanager?.updateContactDetails(for: contactId,
+                                                details: details)
     }
 }
 
 extension EditContactIntractor: EditContactRemoteDataOutputProtocol{
-    func onSuccessfullyUpdated(_ contacts: ContactDetailModel) {
-        
+    
+    func onSuccessfullyUpdated(_ contacts: [String : Any]) {
+        presenter?.didSubmittedContactDetails(contacts)
     }
     
     func onError() {

@@ -23,6 +23,12 @@ class ContactDetailsView: UIViewController {
         viewSetup()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+         presenter?.viewDidLoad()
+    }
+    
     func viewSetup(){
         tableViewSetup()
         
@@ -30,7 +36,6 @@ class ContactDetailsView: UIViewController {
                                                             style: .plain,
                                                             target: self,
                                                             action: #selector(onTapEditContact))
-        presenter?.viewDidLoad()
     }
     
     func tableViewSetup(){
