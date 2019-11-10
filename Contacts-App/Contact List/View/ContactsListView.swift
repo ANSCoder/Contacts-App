@@ -46,7 +46,7 @@ extension ContactsListView: ContactListViewProtocol {
     }
     
     func showError() {
-        //"Internet not connected"
+       showAleartViewwithTitle("Error!", message: "Something went wrong!")
     }
     
     func showLoading() {

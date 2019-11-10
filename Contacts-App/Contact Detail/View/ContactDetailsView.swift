@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MessageUI
 
 class ContactDetailsView: UIViewController {
     
@@ -55,12 +56,59 @@ class ContactDetailsView: UIViewController {
         }
         presenter?.updateContactDetails(for: contactDetailsList[0])
     }
+    
+    func callNumber(phoneNumber: String) {
+        if let phoneCallURL = URL(string: "tel://\(phoneNumber)") {
+
+            let application:UIApplication = UIApplication.shared
+            if (application.canOpenURL(phoneCallURL)) {
+                if #available(iOS 10.0, *) {
+                    application.open(phoneCallURL, options: [:],
+                                     completionHandler: nil)
+                } else {
+                    // Fallback on earlier versions
+                     application.openURL(phoneCallURL as URL)
+                }
+            }
+        }
+    }
+    
+    func makeFavourite(_ contact: ContactDetailModel?){
+        guard contact != nil, var details = contact else {
+            return
+        }
+        details.favorite =  details.favorite ? false : true
+        do {
+            let jsonEncoder = JSONEncoder()
+            let jsonData = try jsonEncoder.encode(details)
+            let dictionary = try JSONSerialization.jsonObject(with: jsonData,
+                                                       options: []) as? [String: Any] ?? [:]
+            presenter?.contactAddToFavourite(for: String(details.id),
+                                             details: dictionary)
+        } catch {
+            print("Unexpected error: \(error).")
+        }
+        
+    }
 }
 
 extension ContactDetailsView: ContactDetailViewProtocol {
+    
+    func contactAddedToFavourite(_ details: ContactDetailModel) {
+        DispatchQueue.main.async {[weak self] in
+            self?.setUpDataForUI(details)
+        }
+    }
 
     func showContactDetail(forContact details: ContactDetailModel) {
+        DispatchQueue.main.async {[weak self] in
+            self?.setUpDataForUI(details)
+        }
+    }
+    
+    func setUpDataForUI(_ details: ContactDetailModel){
         //Create contact Details
+        contactDetailsList = []
         contactDetailsList.append(details)
         contactDetail = [["title": "mobile", "value": details.phoneNumber],
                          ["title": "email", "value": details.email]]
@@ -68,7 +116,7 @@ extension ContactDetailsView: ContactDetailViewProtocol {
     }
     
     func showError() {
-        //"Internet not connected"
+        showAleartViewwithTitle("Error!", message: "Something went wrong!")
     }
     
     func showLoading() {
@@ -114,6 +162,58 @@ extension ContactDetailsView: UITableViewDelegate{
             return headerView
         }
         headerView.configHeader(for: contactDetailsList[section])
+        headerView.subscribeMessageAction = { [weak self] in
+            self?.sendMessage(for: self?.contactDetailsList[section].phoneNumber ?? "")
+        }
+        headerView.subscribeCallAction = { [weak self] in
+            self?.callNumber(phoneNumber: self?.contactDetailsList[section].phoneNumber ?? "")
+        }
+        headerView.subscribeEmailAction = { [weak self] in
+            self?.sendEmail(for: self?.contactDetailsList[section].email ?? "")
+        }
+        headerView.subscribeFavouriteAction = { [weak self] in
+            self?.makeFavourite(self?.contactDetailsList[section])
+        }
         return headerView
+    }
+}
+
+extension ContactDetailsView: MFMailComposeViewControllerDelegate{
+    
+    func sendEmail(for emailId: String) {
+        if MFMailComposeViewController.canSendMail() {
+            let mail = MFMailComposeViewController()
+            mail.mailComposeDelegate = self
+            mail.setToRecipients([emailId])
+            mail.setMessageBody("<p>You're so awesome!</p>", isHTML: true)
+            present(mail, animated: true)
+        } else {
+           showAleartViewwithTitle("Error!", message: "Email not configured.")
+        }
+    }
+
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        controller.dismiss(animated: true)
+    }
+}
+
+extension ContactDetailsView: MFMessageComposeViewControllerDelegate{
+    
+    func sendMessage(for phoneNumber: String) {
+        if MFMessageComposeViewController.canSendText() {
+            let controller = MFMessageComposeViewController()
+            controller.body = "Message Body"
+            controller.recipients = [phoneNumber]
+            controller.messageComposeDelegate = self
+            present(controller, animated: true, completion: nil)
+        } else {
+           showAleartViewwithTitle("Error!", message: "Unable to send message.")
+        }
+    }
+
+    func messageComposeViewController(_ controller: MFMessageComposeViewController,
+                                      didFinishWith result: MessageComposeResult){
+        
+        dismiss(animated: true, completion: nil)
     }
 }

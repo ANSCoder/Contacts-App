@@ -10,6 +10,7 @@ import Foundation
 import Alamofire
 
 class ContactDetailsRemote: ContactDetailsRemoteDataInputProtocol {
+    
     var remoteRequestHandler: ContactDetailsRemoteDataOutputProtocol?
     
     func fetchContactDetails(for contactId: String) {
@@ -23,6 +24,28 @@ class ContactDetailsRemote: ContactDetailsRemoteDataInputProtocol {
                 case .failure( _):
                     self.remoteRequestHandler?.onError()
                 }
+        }
+    }
+    
+    func makeContactFavourite(for contactId: String, details: [String : Any]) {
+        let headers: HTTPHeaders = [
+            "Content-Type": "application/json"
+        ]
+        let urlPath = Endpoints.contactDetail.fetch(contactId).url
+       
+        AF.request(urlPath,
+                   method: .put,
+                   parameters: details,
+                   encoding: JSONEncoding.default,
+                   headers: headers)
+            .validate()
+            .responseDecodable {[weak self] (response: DataResponse<ContactDetailModel, AFError>) in
+                    switch response.result {
+                    case .success(let value):
+                        self?.remoteRequestHandler?.contactAddedToFavourite(value)
+                    case .failure( _):
+                        self?.remoteRequestHandler?.onError()
+                    }
         }
     }
 }

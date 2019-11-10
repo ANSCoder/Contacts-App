@@ -108,7 +108,7 @@ extension EditContactView: EditContactViewProtocol{
             detailList = modifiedDetails.map(DetailsModel.init)
             tableUpdateContact.reloadData()
         } catch {
-            print("Unexpected error: \(error).")
+            debugPrint("Unexpected error: \(error).")
         }
     }
     

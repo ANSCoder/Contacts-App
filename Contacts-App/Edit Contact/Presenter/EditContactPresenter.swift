@@ -23,6 +23,7 @@ class EditContactPresenter: EditContactPresenterProtocol{
         view?.showLoading()
         interactor?.updateContactDetails(for: contactId, details: details)
     }
+    
 }
 
 extension EditContactPresenter: EditContactInteractorOutputProtocol{

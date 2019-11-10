@@ -17,9 +17,17 @@ class ContactDetailsInteractor: ContactDetailsInteractorInputProtocol {
     func retrieveContactDetails(for contactId: String) {
         remoteDatamanager?.fetchContactDetails(for: contactId)
     }
+    
+    func requestForContactAddToFavourite(for contactId: String, details: [String : Any]) {
+        remoteDatamanager?.makeContactFavourite(for: contactId, details: details)
+    }
 }
 
 extension ContactDetailsInteractor: ContactDetailsRemoteDataOutputProtocol{
+    
+    func contactAddedToFavourite(_ details: ContactDetailModel) {
+        presenter?.didContactAddedToFavourite(details)
+    }
     
     func onContactDetailsRetrieved(_ contacts: ContactDetailModel) {
         presenter?.didRetrieveContacts(contacts)

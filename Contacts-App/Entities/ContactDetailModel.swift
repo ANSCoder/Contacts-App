@@ -13,7 +13,7 @@ struct ContactDetailModel: Codable {
     let id: Int
     let firstName, lastName, email, phoneNumber: String
     let profilePic: String
-    let favorite: Bool
+    var favorite: Bool
     let createdAt, updatedAt: String
 
     enum CodingKeys: String, CodingKey {
