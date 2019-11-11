@@ -124,5 +124,203 @@ struct ImageProvider {
 ```
 
 
+## Contact API Documentation
+
+Contact API [Base API Path](http://gojek-contacts-app.herokuapp.com).
+
+- **EndPoint:**
+
+
+``` swift
+struct API {
+    static let baseUrl = "http://gojek-contacts-app.herokuapp.com"
+}
+
+protocol Endpoint {
+    var path: String { get }
+    var url: String { get }
+}
+
+enum Endpoints {
+    
+    enum ImagePath: Endpoint{
+        
+        case profilePic(String)
+        
+        public var path: String {
+            switch self {
+            case .profilePic(let name): return name
+            }
+        }
+        
+        public var url: String {
+            switch self {
+            case .profilePic: return "\(API.baseUrl)\(path)"
+            }
+        }
+    }
+    
+    enum contactList: Endpoint {
+        case fetch
+        
+        public var path: String {
+            switch self {
+            case .fetch: return "/contacts.json"
+            }
+        }
+        
+        public var url: String {
+            switch self {
+            case .fetch: return "\(API.baseUrl)\(path)"
+            }
+        }
+    }
+    
+    enum contactDetail: Endpoint {
+        case fetch(_ contactId: String)
+        
+        public var path: String {
+            switch self {
+            case .fetch(let id): return "/contacts/\(id).json"
+            }
+        }
+        
+        public var url: String {
+            switch self {
+            case .fetch: return "\(API.baseUrl)\(path)"
+            }
+        }
+    }
+}
+```
+
+### To load the photo, you can build the full URL following this pattern:
+```
+Endpoints.ImagePath.profilePic(model.profilePic).url
+```
+### Fetch Contact List:
+```
+            AF
+            .request(Endpoints.contactList.fetch.url, method: .get)
+            .validate()
+            .responseDecodable { (response: DataResponse<ContactList, AFError>) in
+                switch response.result {
+                case .success(let contacts):
+                    self.remoteRequestHandler?.onContactsRetrieved(contacts)
+                case .failure( _):
+                    self.remoteRequestHandler?.onError()
+                }
+        }
+```
+
+### Contact Details:
+```
+let headers: HTTPHeaders = [
+            "Content-Type": "application/json"
+        ]
+        let urlPath = Endpoints.contactDetail.fetch(contactId).url
+       
+        AF.request(urlPath,
+                   method: .put,
+                   parameters: details,
+                   encoding: JSONEncoding.default,
+                   headers: headers)
+            .validate()
+            .responseDecodable {[weak self] (response: DataResponse<ContactDetailModel, AFError>) in
+                    switch response.result {
+                    case .success(let value):
+                        self?.remoteRequestHandler?.contactAddedToFavourite(value)
+                    case .failure( _):
+                        self?.remoteRequestHandler?.onError()
+                    }
+        }
+```
+
+### Edit Details:
+```
+let headers: HTTPHeaders = [
+            "Content-Type": "application/json"
+        ]
+        let urlPath = Endpoints.contactDetail.fetch(contactId).url
+       
+        AF.request(urlPath,
+                   method: .put,
+                   parameters: details,
+                   encoding: JSONEncoding.default,
+                   headers: headers)
+            .validate()
+            .responseJSON {[weak self] response in
+                    switch response.result {
+                    case .success(let value):
+                        self?.remoteRequestHandler?.onSuccessfullyUpdated(value as? [String: Any] ?? [:])
+                    case .failure( _):
+                        self?.remoteRequestHandler?.onError()
+                    }
+        }
+```
+
+### Create New Contact:
+```
+let headers: HTTPHeaders = [
+            "Content-Type": "application/json"
+        ]
+        let urlPath = Endpoints.contactList.fetch.url
+
+        AF.request(urlPath,
+                   method: .post,
+                   parameters: details,
+                   encoding: JSONEncoding.default,
+                   headers: headers)
+            .validate()
+            .responseJSON { response in
+                switch response.result {
+                case .success(let value):
+                    self.remoteRequestHandler?.onSuccessfullyCreated(value as? [String: Any] ?? [:])
+                case .failure( _):
+                    self.remoteRequestHandler?.onError()
+                }
+        }
+```
+
+### Delete Contact:
+```
+let urlPath = Endpoints.contactDetail.fetch(contactId).url
+        
+        AF.request(urlPath,
+                   method: .delete)
+            .validate()
+            .responseJSON {[weak self] response in
+                    switch response.result {
+                    case .success:
+                        self?.remoteRequestHandler?.onDeleteContactSuccessFully()
+                    case .failure( _):
+                        self?.remoteRequestHandler?.onError()
+                    }
+        }
+```
+
+##  UI Components & Apple APIs
+
+- [x] Storyboard 
+- [x] Coadable Protocol
+- [x] UITableView
+- [x] MessageUI
+- [x] UIAlertController
+- [x] UIImagePickerController
+
+
+## Unit Testing 
+
+Test case added for these following  views - 
+
+- [x] Contact List 
+- [x] Create New Contact
+- [x] Contact Detail
+- [x] Add to favourite
+
+
+## 👤 Author
+
+**Anscoder** [(Anand Nimje)](https://twitter.com/anand8402) 
 
 
