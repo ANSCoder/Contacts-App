@@ -52,12 +52,10 @@ class CreateContactView: UIViewController {
                                     forHeaderFooterViewReuseIdentifier: "EditContactHeaderView")
         tableCreateContact.tableFooterView = UIView()
         
-        DispatchQueue.main.async { [weak self] in
-            self?.detailList = displayInformation.keys
-                .map{["title":"\($0)", "value": ""]}
-                .map(DetailsModel.init)
-            self?.tableCreateContact.reloadData()
-        }
+        detailList = displayInformationKeys
+            .map{["title":"\($0)", "value": ""]}
+            .map(DetailsModel.init)
+        tableCreateContact.reloadData()
     }
     
     //MARK: - Update Contact Details

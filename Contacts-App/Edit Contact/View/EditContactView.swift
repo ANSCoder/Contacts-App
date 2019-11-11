@@ -108,7 +108,7 @@ extension EditContactView: EditContactViewProtocol{
                                                        options: []) as? [String: Any] ?? [:]
             contactDetails = dic
             let modifiedDetails = dic.map{["title":"\($0)", "value": "\($1)"]}
-                .filter{ displayInformation.keys.contains($0["title"] ?? "")}
+                .filter{ displayInformationKeys.contains($0["title"] ?? "")}
             detailList = modifiedDetails.map(DetailsModel.init)
             tableUpdateContact.reloadData()
         } catch {

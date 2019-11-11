@@ -12,3 +12,7 @@ public let displayInformation = ["first_name" : "First Name",
                                  "last_name" : "Last Name",
                                  "phone_number" : "Mobile",
                                  "email" : "Email"]
+public let displayInformationKeys = ["first_name",
+                                     "last_name",
+                                     "phone_number",
+                                     "email"]
