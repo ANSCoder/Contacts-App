@@ -53,6 +53,17 @@ class ContactsListView: UIViewController {
     @IBAction func createNewContact(_ sender: UIBarButtonItem) {
         presenter?.createNewContact()
     }
+    
+    //MARK: - Make group list
+    @IBAction func createGroup(_ sender: UIBarButtonItem) {
+        guard contactList.count != 0 else {
+            return
+        }
+        let group = Dictionary(grouping: contactList) {
+            $0[keyPath: \.firstName].prefix(1).uppercased()
+        }.sorted{ $0.key < $1.key }
+        print(group)
+    }
 }
 
 //MARK: - Networking API response & Data setup for View
@@ -82,6 +93,7 @@ extension ContactsListView: ContactListViewProtocol {
         loadingViewController.remove()
     }
 }
+
 
 //MARK: - Table View DataSource
 extension ContactsListView: UITableViewDataSource{
